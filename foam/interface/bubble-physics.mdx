@@ -10,7 +10,7 @@ This is the heart of FOAM's sound generation. These controls determine the funda
 | Knob | What It Does |
 |------|--------------|
 | **Rate** | How many bubbles are emitted per second. At minimum, you get sparse individual pops. At maximum, a dense foam cascade. Exponentially scaled — small movements at the low end create subtle changes, while the upper range gets dense quickly. |
-| **Size** | The physical size of bubbles, which directly determines pitch via the Minnaert equation. Larger bubbles = lower pitch, smaller bubbles = higher pitch. Range corresponds to roughly 0.1mm to 50mm bubble radius. |
+| **Size** | The physical size of bubbles, which directly determines pitch. Larger bubbles = lower pitch, smaller bubbles = higher pitch. |
 | **Ring** | How long each bubble resonates after bursting. Short times (20-50ms) give crisp pops; longer times (up to 500ms) create sustained, bell-like tones. Default is 100ms (physically realistic). |
 
 ## Cascade & Movement
@@ -24,9 +24,9 @@ This is the heart of FOAM's sound generation. These controls determine the funda
 
 | Knob | What It Does |
 |------|--------------|
-| **Shimmer** | Real bubbles aren't perfect spheres — they wobble and deform. This adds subtle pitch modulation from shape oscillation, creating organic "chorus-like" movement. |
-| **Balance** | Controls the natural amplitude relationship between bubble sizes. At 100% (physics-accurate), large bubbles are louder than small ones following the D-squared law. At 0%, all bubbles have equal loudness regardless of size. |
-| **Jets** | When bubbles burst at the surface, they can create upward liquid jets that produce secondary "plink" sounds. Adds the characteristic rain-drop-on-water quality. |
+| **Shimmer** | Real bubbles aren't perfect spheres — they wobble and deform. This adds subtle pitch modulation, creating organic "chorus-like" movement. |
+| **Balance** | Controls the natural amplitude relationship between bubble sizes. At 100% (physics-accurate), large bubbles are louder than small ones. At 0%, all bubbles have equal loudness regardless of size. |
+| **Jets** | When bubbles burst at the surface, they can produce secondary "plink" sounds. Adds the characteristic rain-drop-on-water quality. |
 
 ## Flow Type
 

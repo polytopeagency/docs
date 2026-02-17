@@ -3,54 +3,52 @@ title: "The Physics"
 description: "The acoustic science behind FOAM"
 ---
 
-FOAM implements peer-reviewed acoustic physics — not approximations or samples.
+FOAM implements real acoustic physics — not approximations or samples. Every sound is generated from physical models of how bubbles actually behave in liquid.
 
-## Core Bubble Acoustics
+## What Makes FOAM Different
 
-| Model | What It Does | Source |
-|-------|--------------|--------|
-| **Minnaert resonance** | Bubble radius determines pitch (f proportional to 1/R) with surface tension correction | Leighton eq. 3.122 |
-| **Prosperetti thermal damping** | Small bubbles decay adiabatically, large bubbles isothermally, with smooth transition | Prosperetti (1977) |
-| **Three damping mechanisms** | Thermal + viscous + radiation damping combined | Leighton eq. 4.30 |
-| **Two-phase burst model** | Film rupture (broadband crack) then cavity resonance (chirping tone) | Leighton Section 3.8 |
+Most synthesizers that produce "bubble" or "water" sounds use either samples or basic noise shaping. FOAM takes a fundamentally different approach: it simulates the actual physics of gas bubbles in liquid — how they form, resonate, interact, and burst.
 
-## Population & Collective Effects
+This means:
+- **Bubble pitch is physically accurate** — determined by size, liquid properties, and pressure
+- **Decay and damping respond to the medium** — water sounds different from honey because the physics are different
+- **Collective behavior emerges naturally** — dense bubble populations interact and influence each other
+- **Surface effects are modeled** — reflections, secondary emissions, and interference patterns arise from the physics
 
-| Model | What It Does | Source |
-|-------|--------------|--------|
-| **Void fraction coupling** | Dense bubble clouds shift each other's resonant frequencies | Leighton eq. 4.23 |
-| **Wood's equation** | Sound speed in gas-liquid mixtures (the "hot chocolate effect") | Wood (1941) |
-| **Spatial coupling** | Nearby bubbles modulate each other's pitch and amplitude | Leighton Ch. 4 |
-| **Deane-Stokes distribution** | Power-law bubble size statistics from wave-breaking research | Deane & Stokes (2002) |
+## Core Acoustics
 
-## Foam Topology
+FOAM models the complete lifecycle of a bubble burst event:
 
-| Model | What It Does | Source |
-|-------|--------------|--------|
-| **Von Neumann dynamics** | Foam coarsening law: dA/dt = K(n-6) drives pitch evolution | Von Neumann |
-| **T1 events** | Neighbor-switching when films snap through (Plateau's 120-degree law) with Minnaert-based frequencies | Weaire & Hutzler |
-| **T2 events** | Bubble collapse with accelerating chirp as radius approaches zero | Topology physics |
-| **Jamming transition** | Phase change at critical packing fraction | Liu & Nagel |
-| **Herschel-Bulkley rheology** | Yield stress and avalanche dynamics in stressed foam | Rheology literature |
+1. **Film rupture** — the thin cap breaks, producing a broadband transient
+2. **Cavity resonance** — the open cavity rings at a pitch determined by bubble size and liquid properties
+3. **Damping** — the oscillation decays through multiple physical mechanisms that depend on bubble size and liquid viscosity
+
+## Population Effects
+
+When many bubbles are present simultaneously, FOAM models their collective behavior:
+
+- Dense bubble clouds affect each other's resonant behavior
+- Statistical size distributions create natural spectral profiles
+- Spatial proximity between bubbles creates organic pitch and amplitude variation
+
+## Foam Structure
+
+The Topology system models how structured foam evolves over time:
+
+- Foam coarsens as bubbles grow and shrink
+- Structural rearrangements produce characteristic acoustic events
+- Phase transitions create dramatic textural shifts
+- Stressed foam exhibits yield and avalanche behavior
 
 ## Surface & Secondary Effects
 
-| Model | What It Does | Source |
-|-------|--------------|--------|
-| **Lloyd's Mirror** | Surface reflection creates comb-filtering interference | Acoustic imaging |
-| **Worthington jets** | Cavity collapse creates upward jet producing secondary "plink" droplets | Pumphrey & Crum |
-| **Hydrostatic pressure** | Depth affects bubble pitch | Basic physics |
-| **Initial compression** | Bubbles born compressed from pinch-off, releasing stored energy | Pumphrey & Crum |
-| **Shape mode oscillation** | Non-spherical wobble adds organic "shimmer" modulation | Prosperetti |
+FOAM also models phenomena that occur at and above the liquid surface:
 
-## Physical Constants (Water at 20C)
+- Surface reflections create interference and depth cues
+- Cavity collapse can produce secondary acoustic events
+- Depth and pressure affect pitch
+- Non-spherical deformation adds organic modulation
 
-```
-Density:              998 kg/m3
-Surface tension:      0.0728 N/m
-Viscosity:            0.001 Pa-s
-Sound speed:          1500 m/s
-Atmospheric pressure: 101325 Pa
-```
+## Physical Accuracy
 
-*Primary reference: Leighton, T.G. "The Acoustic Bubble" (Academic Press, 1994)*
+FOAM's material presets (Water, Seawater, Soap Solution, Glycerol, Honey, Mercury) use measured physical properties of real liquids. When you adjust Liquid Mass, Tension, and Viscosity manually, you're directly controlling the physical parameters of the simulation.
