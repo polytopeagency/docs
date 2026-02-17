@@ -1,0 +1,56 @@
+---
+title: "The Physics"
+description: "The acoustic science behind FOAM"
+---
+
+FOAM implements peer-reviewed acoustic physics — not approximations or samples.
+
+## Core Bubble Acoustics
+
+| Model | What It Does | Source |
+|-------|--------------|--------|
+| **Minnaert resonance** | Bubble radius determines pitch (f proportional to 1/R) with surface tension correction | Leighton eq. 3.122 |
+| **Prosperetti thermal damping** | Small bubbles decay adiabatically, large bubbles isothermally, with smooth transition | Prosperetti (1977) |
+| **Three damping mechanisms** | Thermal + viscous + radiation damping combined | Leighton eq. 4.30 |
+| **Two-phase burst model** | Film rupture (broadband crack) then cavity resonance (chirping tone) | Leighton Section 3.8 |
+
+## Population & Collective Effects
+
+| Model | What It Does | Source |
+|-------|--------------|--------|
+| **Void fraction coupling** | Dense bubble clouds shift each other's resonant frequencies | Leighton eq. 4.23 |
+| **Wood's equation** | Sound speed in gas-liquid mixtures (the "hot chocolate effect") | Wood (1941) |
+| **Spatial coupling** | Nearby bubbles modulate each other's pitch and amplitude | Leighton Ch. 4 |
+| **Deane-Stokes distribution** | Power-law bubble size statistics from wave-breaking research | Deane & Stokes (2002) |
+
+## Foam Topology
+
+| Model | What It Does | Source |
+|-------|--------------|--------|
+| **Von Neumann dynamics** | Foam coarsening law: dA/dt = K(n-6) drives pitch evolution | Von Neumann |
+| **T1 events** | Neighbor-switching when films snap through (Plateau's 120-degree law) with Minnaert-based frequencies | Weaire & Hutzler |
+| **T2 events** | Bubble collapse with accelerating chirp as radius approaches zero | Topology physics |
+| **Jamming transition** | Phase change at critical packing fraction | Liu & Nagel |
+| **Herschel-Bulkley rheology** | Yield stress and avalanche dynamics in stressed foam | Rheology literature |
+
+## Surface & Secondary Effects
+
+| Model | What It Does | Source |
+|-------|--------------|--------|
+| **Lloyd's Mirror** | Surface reflection creates comb-filtering interference | Acoustic imaging |
+| **Worthington jets** | Cavity collapse creates upward jet producing secondary "plink" droplets | Pumphrey & Crum |
+| **Hydrostatic pressure** | Depth affects bubble pitch | Basic physics |
+| **Initial compression** | Bubbles born compressed from pinch-off, releasing stored energy | Pumphrey & Crum |
+| **Shape mode oscillation** | Non-spherical wobble adds organic "shimmer" modulation | Prosperetti |
+
+## Physical Constants (Water at 20C)
+
+```
+Density:              998 kg/m3
+Surface tension:      0.0728 N/m
+Viscosity:            0.001 Pa-s
+Sound speed:          1500 m/s
+Atmospheric pressure: 101325 Pa
+```
+
+*Primary reference: Leighton, T.G. "The Acoustic Bubble" (Academic Press, 1994)*

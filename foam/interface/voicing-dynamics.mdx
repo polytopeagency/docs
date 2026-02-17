@@ -1,0 +1,32 @@
+---
+title: "Foam Voicing Dynamics"
+description: "Voice scaling and parallel compression"
+---
+
+This card handles how multiple simultaneous bubbles are mixed and balanced.
+
+## Intelligent Voice Scaling
+
+These controls manage gain when many bubbles play simultaneously. The system considers multiple factors including frequency content, spatial position, transient preservation, spectral density, cascade depth, and voice age.
+
+| Knob | Range | What It Does |
+|------|-------|--------------|
+| **Gain Scaling** | Linear - Adapt | Blends between simple 1/sqrt(N) scaling and intelligent multi-factor analysis that considers frequency, spatial position, and transient content. |
+| **Freq Summing** | Flat - Physics | How much frequency content affects gain scaling. "Flat" ignores frequency, "Physics" accounts for how similar frequencies sum coherently. |
+| **Spatial** | Flat - Wide | How much stereo position affects scaling. "Flat" ignores position, "Wide" reduces gain when bubbles occupy similar positions. |
+| **Transients** | Soft - Punch | Preserves attack transients during gain reduction. "Soft" scales everything equally, "Punch" protects the initial pop (first 50ms). |
+
+## Parallel Compression
+
+8-band parallel compression adds density and sustain:
+
+| Control | What It Does |
+|---------|--------------|
+| **Drive** | Input gain to the compressor (-12 to +12 dB). Boost to drive compression harder. |
+| **Band Knobs (63Hz - 8kHz)** | Mix amount of compressed signal per frequency band. At 0% (shows null symbol), that band has no parallel compression. Higher values blend in more compressed signal for that frequency range. |
+
+<Tip>
+The band knobs default to 0% (off). This gives you clean, uncompressed sound. Add parallel compression intentionally — try boosting the low bands (63-250Hz) for weight, or the high bands (4k-8k) for presence and sizzle.
+</Tip>
+
+All Drive and band knob values are saved with presets and are fully automatable in your DAW.

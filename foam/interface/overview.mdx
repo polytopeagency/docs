@@ -1,0 +1,30 @@
+---
+title: "Interface Overview"
+description: "FOAM's interface layout and navigation"
+---
+
+FOAM's interface is organized into five main cards:
+
+| Card | Location | Purpose |
+|------|----------|---------|
+| **Bubble Physics** | Top Left | How bubbles emerge, pop, ring, and fade |
+| **Fluid Dynamics** | Bottom Left | The liquid medium — density, tension, damping |
+| **Enhancers** | Top Right | Spatial effects, modulation, and temporal dynamics |
+| **Pitch Gravity Logic** | Bottom Right | Scale quantization and pitch behavior |
+| **Foam Voicing Dynamics** | Center Bottom | Voice scaling and parallel compression |
+
+## Header Bar
+
+The top bar contains:
+
+- **Preset dropdown** — browse and save presets
+- **MIDI Learn** button — click, then right-click any knob to assign a MIDI CC
+- **CPU Cut** button — reduces density for low-power machines
+- **OSC Setup** button — configure OSC output (green when active)
+
+## Parameter Locking
+
+Right-click any knob to **lock** it. Locked parameters are excluded from:
+- Chaos randomization on note-on
+- Drift modulation
+- Preset changes (locked knobs retain their current value)

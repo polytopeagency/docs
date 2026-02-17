@@ -1,0 +1,57 @@
+---
+title: "Tips & Troubleshooting"
+description: "Getting the most out of FOAM"
+---
+
+## Getting Started
+
+1. **Start simple** — begin with default settings and explore one card at a time
+2. **Use material presets** — the Material dropdown is the fastest way to dramatically change character
+3. **Rate + Size = Foundation** — these two knobs define 80% of your sound
+4. **Add motion last** — get your base sound right before adding Chaos, Drift, or Surge
+
+## Common Gotchas
+
+<Warning>
+**Topology CPU Usage** — High Topology values can be CPU-intensive, especially with high Rate. If you experience audio dropouts, reduce Topology or Rate, or enable CPU Cut.
+</Warning>
+
+<Warning>
+**Surge Needs Headroom** — Surge modulates parameters including Rate. Set Rate to 30-50% to give Surge room to create dynamic swells.
+</Warning>
+
+<Warning>
+**Cascade Chain Reactions** — High Cascade values with high Rate can create exponential bubble growth. If things get out of control, reduce one or both.
+</Warning>
+
+<Info>
+**Balance Affects Mix** — At 100% Balance (physics-accurate), large/low bubbles dominate the mix. If you want more high-frequency content to cut through, reduce Balance.
+</Info>
+
+## Sound Design Tips
+
+### Sparse, Delicate Pops
+- Rate: low (5-15%)
+- Size: medium
+- Ring: short (20-50ms)
+- Flow Type: Poisson
+- Material: Water
+
+### Dense Foam Cascade
+- Rate: high (70-100%)
+- Cascade: medium-high
+- Material: Soap Solution
+- Surge: Gush or Roil
+- Add Drift for evolving texture
+
+### Musical / Tonal
+- Set Gravity to 80-100%
+- Choose a scale and root note
+- Snap towards MAGIC for stronger pitch perception
+- Use Scatter for natural variation between voices
+
+### Deep Sub Bass
+- Size: large
+- Rate: low-medium
+- Compress low bands (63-250Hz) in Voicing Dynamics
+- Balance: reduce to let low frequencies through evenly

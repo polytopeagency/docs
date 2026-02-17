@@ -1,0 +1,41 @@
+---
+title: "OSC Output"
+description: "Stream bubble events to external applications"
+---
+
+FOAM can send real-time bubble event data via OSC (Open Sound Control) for visualization, external processing, or creative applications.
+
+## Setup
+
+Click the **OSC Setup** button in the header bar (turns green when active). Configure the destination IP address and port.
+
+## Per-Bubble Events
+
+Each bubble trigger sends:
+
+| Address | Data |
+|---------|------|
+| `/foam/bubble/trigger` | id, x, y, z, radius, frequency, velocity |
+
+## Aggregate Statistics (60Hz)
+
+FOAM continuously streams summary data:
+
+| Address | Data |
+|---------|------|
+| `/foam/density` | Current bubble density |
+| `/foam/activity` | Voice activity level |
+| `/foam/centroid` | Center of mass position |
+| `/foam/pitch/average` | Average pitch across active bubbles |
+| `/foam/pitch/range` | Pitch range (low to high) |
+| `/foam/count` | Active bubble count |
+
+## Configuration
+
+In the OSC settings panel you can toggle individual streams:
+
+- **Position data** — per-bubble spatial coordinates
+- **Pitch data** — per-bubble frequency information
+- **Aggregate data** — summary statistics
+
+OSC settings are saved with your DAW session.

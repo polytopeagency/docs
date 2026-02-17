@@ -1,0 +1,51 @@
+---
+title: "Enhancers"
+description: "Spatial effects, modulation, and temporal dynamics"
+---
+
+This card adds spatial dimension, modulation, and temporal dynamics to your bubble sounds.
+
+## Spatial Effects
+
+| Knob | What It Does |
+|------|--------------|
+| **Topology** | Foam topology simulation — models how bubbles interact in a foam structure, including merging and rearrangement events (T1/T2 topology events). |
+| **Width** | Stereo spread of the bubble field. At 0, everything is mono-centered. At 100%, bubbles are distributed across the full stereo field. |
+| **Mirror Depth** | Lloyd's Mirror effect — simulates acoustic reflection from a water surface. Creates comb-filtering and depth perception. |
+
+<Warning>
+**Topology** enables experimental foam physics simulation including Von Neumann coarsening dynamics and topological rearrangement events. While it creates interesting evolving textures, it can be CPU-intensive at high values. For most situations, leaving Topology at 0% is recommended.
+</Warning>
+
+## Motion Modulation
+
+| Knob | What It Does |
+|------|--------------|
+| **Chaos** | On each MIDI note, randomizes unlocked parameters by this amount. Creates variation between notes. Right-click any knob to lock it from Chaos modulation. |
+| **Drift** | Slow Brownian-walk modulation over 30-120 seconds. Parameters gradually wander with velocity-smoothed random walks, creating evolving textures without sudden changes. |
+| **Scatter** | Per-voice random variation. Each simultaneous bubble gets slightly different parameter values (surface tension, viscosity, decay, radius), creating natural ensemble variation. Zero effect when set to 0%. |
+
+## Surge Modulator
+
+Surge provides physics-based temporal envelopes that trigger on note-on, creating evolving foam events.
+
+| Control | What It Does |
+|---------|--------------|
+| **Surge Mode** | Selects the envelope shape |
+| **Time** | Total envelope duration (1-30 seconds) |
+| **Depth** | How much the envelope modulates parameters (0-100%) |
+
+### Surge Modes
+
+| Mode | Character |
+|------|-----------|
+| **Off** | No temporal modulation |
+| **Wave** | Smooth sine-like swells |
+| **Pummel** | Aggressive attack, rhythmic pumping |
+| **Roil** | Turbulent, chaotic modulation |
+| **Gush** | Building intensity, like water surging |
+| **Burst** | Sharp attack, gradual decay |
+
+<Info>
+Surge modulates the Rate parameter among others. If Rate is already at maximum, Surge has nowhere to push it higher. **Set Rate to 30-50%** so Surge can modulate in both directions for the full dynamic range of foam events.
+</Info>
