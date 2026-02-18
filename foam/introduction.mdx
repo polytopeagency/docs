@@ -10,26 +10,29 @@ This grounding in actual acoustics produces sounds that are inherently organic a
 ## Key Features
 
 - **Physics-driven synthesis** — every sound is generated from physical models, not samples
-- **99 factory presets** across 8 categories with tier-based organization
-- **MIDI playable** — note pitch controls bubble frequency, velocity controls intensity
+- **99 factory presets** across 8 categories with tier-based organization. These are statistically generated starting points to explore from and intentionally NOT answers  :)
+- **MIDI playable** — note pitch controls bubble frequency, velocity controls intensity, MPE mapping
 - **75+ musical scales** with gravity-based pitch quantization
 - **8-band parallel compression** for density and sustain control
 - **Intelligent voice scaling** — multi-factor gain management for clean mixes at any density
 - **OSC output** — stream bubble events to external apps for visualization or processing
 - **CPU Cut mode** — optimized playback for low-power machines
+- **GPU Cut mode** - stops the visualization for further efficiency in rendering or heavy workflows
 
 ## Formats
 
 FOAM is available as:
+
 - **VST3** plugin
 - **AU** (Audio Units) plugin
 - **Standalone** application
 
 ## System Requirements
 
-- macOS 10.15 (Catalina) or later
+- macOS 10.15 (Catalina) or later (request Windows if you need it and we'll work on it!)
 - Any major DAW: Ableton Live, Logic Pro, FL Studio, Reaper, Pro Tools, Bitwig, Cubase
+- NOTE: For the moment you need to use a buffer/block size of \<64 to hear the system accurately. It sounds best in the standalone at 16 as of Feb 17, 2026. We are working on this issue. 
 
 ## Credits
 
-FOAM by Micah Silver with NOMN
+FOAM by Micah Silver with NOMN -- Inspired by the book THE ACOUSTIC BUBBLE by Timothy Leighton
