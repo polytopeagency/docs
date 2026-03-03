@@ -93,6 +93,43 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "CHAKRABOOST",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "chakraboost/introduction",
+              "chakraboost/installation",
+              "chakraboost/quick-start"
+            ]
+          },
+          {
+            "group": "Interface Guide",
+            "pages": [
+              "chakraboost/interface/overview",
+              "chakraboost/interface/phaser",
+              "chakraboost/interface/compression",
+              "chakraboost/interface/spatial"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "chakraboost/features/crossover",
+              "chakraboost/features/visualization"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "chakraboost/reference/parameters",
+              "chakraboost/reference/tips",
+              "chakraboost/reference/licensing"
+            ]
+          }
+        ]
       }
     ]
   },

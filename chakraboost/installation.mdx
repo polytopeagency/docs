@@ -1,0 +1,61 @@
+---
+title: Installation
+description: Download and install CHAKRABOOST as VST3, Audio Unit, or Standalone
+---
+
+# Installation
+
+## System Requirements
+
+- **OS:** macOS (Apple Silicon + Intel)
+- **Formats:** VST3, Audio Unit (AU), Standalone
+- **DAW:** Any VST3 or AU-compatible host (Ableton Live, Logic Pro, Reaper, Bitwig, etc.)
+
+## Download
+
+Download the latest CHAKRABOOST installer from [nomn.ai](https://nomn.ai).
+
+## Install
+
+Run the installer. It places plugin files in the standard locations:
+
+| Format | Location |
+|--------|----------|
+| **VST3** | `~/Library/Audio/Plug-Ins/VST3/CHAKRABOOST.vst3` |
+| **AU** | `~/Library/Audio/Plug-Ins/Components/CHAKRABOOST.component` |
+| **Standalone** | `/Applications/CHAKRABOOST.app` |
+
+## DAW Setup
+
+### Ableton Live
+1. Open **Preferences → Plug-Ins**
+2. Enable **VST3** and set the custom folder if needed
+3. Rescan plugins
+4. Find CHAKRABOOST under **Plug-Ins → NOMN**
+
+### Logic Pro
+1. Open **Logic Pro → Settings → Audio Units**
+2. Logic scans AU plugins automatically on launch
+3. Find CHAKRABOOST under **Audio FX → NOMN → CHAKRABOOST**
+
+### Reaper
+1. Open **Preferences → Plug-Ins → VST**
+2. Add VST3 path if not already listed
+3. Rescan
+4. Insert CHAKRABOOST on any track via **FX → VST3**
+
+## Audio Routing
+
+CHAKRABOOST is an audio effect processor. To use it:
+
+1. Load CHAKRABOOST as an **insert effect** on any audio or bus track
+2. For stereo output, no additional routing is required
+3. For surround output (Quad, 5.1, 7.1), ensure your track and bus configuration matches the selected speaker layout
+
+<Tip>
+In standalone mode, CHAKRABOOST processes audio from your system's selected input device. Use the **Audio Settings** panel to configure input/output devices and buffer size.
+</Tip>
+
+## Uninstall
+
+Delete the plugin files from the locations listed above. User presets are stored in `~/Library/Application Support/CHAKRABOOST/` — remove this folder to clear all saved data.

@@ -1,0 +1,55 @@
+---
+title: Adaptive Compression
+description: Per-band program-dependent parallel compression with crest-factor analysis
+---
+
+# Adaptive Compression
+
+Each band has an independent adaptive parallel compressor. The compressor uses crest-factor analysis to continuously evaluate the dynamic character of the incoming signal and adjusts its timing behavior accordingly -- no static attack/release values applied blindly to all material.
+
+## Program-Dependent Timing
+
+The compressor measures the crest factor (peak-to-RMS ratio) of each band's signal in real time and uses it to bias the attack and release behavior:
+
+| Signal Character | Crest Factor | Attack Bias | Release Bias |
+|-----------------|-------------|-------------|--------------|
+| Dynamic / transient-heavy | High | Slower | Faster |
+| Compressed / sustained | Low | Faster | Slower |
+
+Dynamic content (drums, plucked instruments) benefits from slower attack to preserve transient punch, paired with faster release to recover before the next hit. Compressed or sustained content (pads, distorted guitars) benefits from faster attack for consistent level control and slower release for smooth gain riding.
+
+The Attack and Release knobs set the center point of this adaptive range. The crest-factor analysis modulates around that center, not replacing your settings but bending them toward what the signal needs.
+
+## NY-Style Parallel Compression
+
+The Comp Mix control blends the dry (uncompressed) signal with the heavily compressed signal in parallel -- the classic New York compression technique. At 0.0, only the dry signal passes. At 1.0, only the compressed signal passes. Values between produce the characteristic parallel compression effect: the dry signal preserves transient detail and natural dynamics while the compressed signal lifts low-level detail and adds body.
+
+## Parameters
+
+Per-band compression controls. Parameter IDs use the `bandN_` prefix (e.g., `band1_compThreshold`, `band5_compRatio`).
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| Threshold | `compThreshold` | -60--0 dB | -20 dB | Level above which compression engages |
+| Ratio | `compRatio` | 1:1--20:1 | 4:1 | Compression ratio -- higher values produce more aggressive gain reduction |
+| Attack | `compAttack` | 0.1--100 ms | 10 ms | Base attack time (modulated by crest-factor analysis) |
+| Release | `compRelease` | 10--1000 ms | 100 ms | Base release time (modulated by crest-factor analysis) |
+| Comp Mix | `compMix` | 0.0--1.0 | 0.5 | Parallel blend -- dry signal vs compressed signal |
+
+## Additional Features
+
+### Soft Knee
+
+The compressor uses a fixed 6 dB soft knee. Rather than an abrupt transition at the threshold, gain reduction begins gradually 3 dB below the threshold and reaches the full ratio 3 dB above it. This eliminates the audible "grab" that hard-knee compression can produce on tonal material.
+
+### Auto Makeup Gain
+
+An optional auto makeup gain compensates for the level reduction caused by compression. When enabled, the output is boosted by an amount derived from the threshold and ratio settings, keeping perceived loudness roughly consistent as you adjust compression depth.
+
+### Gain Reduction Metering
+
+Each band displays a dedicated gain reduction meter showing how much compression is being applied in real time. The meter is visible in the band control panel whenever that band is selected, providing immediate visual feedback on compressor activity.
+
+<Note>
+Attack and Release values are center points, not fixed times. The crest-factor analysis continuously adjusts the effective timing around these values. If you need strict, predictable timing, set the signal to a consistent level before the compressor -- the adaptive behavior converges toward your knob settings when the crest factor is stable.
+</Note>

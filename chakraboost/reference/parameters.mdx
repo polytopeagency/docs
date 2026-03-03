@@ -1,0 +1,91 @@
+---
+title: Parameter Reference
+description: All 183 automatable parameters across global, per-band, and surround controls
+---
+
+# Parameter Reference
+
+CHAKRABOOST exposes **183 automatable parameters**: 4 global, 22 per band (x8 bands = 176), and 3 global surround controls.
+
+## Global Parameters (4)
+
+| Parameter | ID | Range | Default | Description |
+|-----------|----|-------|---------|-------------|
+| Input Gain | `inputGain` | −24 to +24 dB | 0 dB | Level adjustment before the crossover filter bank |
+| Output Gain | `outputGain` | −24 to +24 dB | 0 dB | Level adjustment after all band processing and recombination |
+| Dry/Wet | `dryWet` | 0–100% | 100% | Blend between unprocessed input and fully processed output |
+| Bypass | `bypass` | On/Off | Off | Pass audio through unprocessed (all bands bypassed) |
+
+## Per-Band Parameters (22 per band x 8 bands = 176)
+
+Each of the 8 chakra bands exposes 22 parameters, organized into five groups. Parameter IDs are prefixed with `bandN_` where N is the band index (0–7).
+
+### Phaser (4 per band)
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| Depth | `depth` | 0.0–1.0 | 0.5 | Phaser modulation depth — how far the all-pass frequency sweeps |
+| Feedback | `feedback` | 0.0–0.95 | 0.3 | Phaser feedback amount — higher values create more resonant peaks |
+| Mix | `mix` | 0–100% | 50% | Blend between dry band signal and phased signal |
+| Rate | `rate` | 0.01–20.0 Hz | 1.0 Hz | LFO speed for phaser modulation |
+
+### LFO (5 per band)
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| LFO Mode | `lfoMode` | Sine / Triangle / Saw / Reverse Saw / Square / Random / Neural | Sine | Modulation waveform shape |
+| Neural Rhythm | `neuralRhythm` | 0.0–1.0 | 0.5 | Rhythmic character of the proprietary modulation system (Neural mode only) |
+| Neural Articulation | `neuralArticulation` | 0.0–1.0 | 0.5 | Articulation style of the proprietary modulation system (Neural mode only) |
+| Neural Depth | `neuralDepth` | 0.0–1.0 | 0.5 | Modulation intensity of the proprietary modulation system (Neural mode only) |
+| Neural Temperature | `neuralTemperature` | 0.0–1.0 | 0.5 | Randomness/variation in the proprietary modulation system (Neural mode only) |
+
+### Spatial (5 per band)
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| Pan | `pan` | −1.0 to +1.0 | 0.0 | Static horizontal pan position (L/R) |
+| Pan Depth | `panDepth` | 0.0–1.0 | 0.0 | LFO-driven horizontal pan modulation depth |
+| Pan Y | `panY` | −1.0 to +1.0 | 0.0 | Static front/back position (surround modes only) |
+| Pan Depth Y | `panDepthY` | 0.0–1.0 | 0.0 | LFO-driven front/back pan modulation depth (surround modes only) |
+| Orbit Angle | `orbitAngle` | 0–360° | 0° | Phase offset for spatial LFO orbit — offsets the starting angle of circular panning |
+
+### Compression (5 per band)
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| Threshold | `compThreshold` | −60 to 0 dB | −20 dB | Level above which compression engages |
+| Ratio | `compRatio` | 1:1–20:1 | 4:1 | Compression ratio above threshold |
+| Attack | `compAttack` | 0.1–100 ms | 10 ms | Time for compressor to engage after signal exceeds threshold |
+| Release | `compRelease` | 10–1000 ms | 100 ms | Time for compressor to disengage after signal drops below threshold |
+| Comp Mix | `compMix` | 0–100% | 100% | Parallel compression blend — 0% is no compression, 100% is fully compressed |
+
+### Utility (3 per band)
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| Gain | `gain` | −24 to +24 dB | 0 dB | Post-crossover band level |
+| Solo | `solo` | On/Off | Off | Isolate this band |
+| Mute | `mute` | On/Off | Off | Silence this band |
+
+## Global Surround Parameters (3)
+
+| Parameter | ID | Options/Range | Default | Description |
+|-----------|----|---------------|---------|-------------|
+| Speaker Layout | `speakerLayout` | Stereo / Quad / 5.1 / 7.1 | Stereo | Output channel configuration |
+| LFE Channel | `lfeChannel` | None / Ch 1–8 | None | Route a specific band to the LFE (subwoofer) channel |
+| LFE Level | `lfeLevel` | 0.0–1.0 | 0.7 | Level of the LFE channel send |
+
+## Parameter Count Summary
+
+| Group | Count |
+|-------|-------|
+| Global | 4 |
+| Per-band (22 x 8) | 176 |
+| Global Surround | 3 |
+| **Total** | **183** |
+
+All 183 parameters are fully automatable from your DAW's automation lanes.
+
+<Note>
+The Neural LFO parameters (`neuralRhythm`, `neuralArticulation`, `neuralDepth`, `neuralTemperature`) only affect modulation when `lfoMode` is set to Neural. In all other LFO modes, these parameters are ignored.
+</Note>

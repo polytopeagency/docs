@@ -1,0 +1,67 @@
+---
+title: Vactrol Phaser
+description: FP-777 Flying Pan circuit emulation with vactrol-modeled all-pass stages and dual LFO modes
+---
+
+# Vactrol Phaser
+
+The phaser emulates the FP-777 Flying Pan circuit -- four cascaded all-pass stages, each controlled by an independent vactrol (LED/LDR optocoupler) model. The vactrol modeling is the defining character of this phaser, producing the slow, syrupy sweeps and asymmetric response that distinguish optical phasers from their digital counterparts.
+
+## Vactrol Characteristics
+
+Each of the four stages models a discrete vactrol element with the following behavior:
+
+- **Asymmetric response** -- Fast attack (~3.5 ms) and slow release (150--1500 ms). The LDR charges quickly when the LED illuminates but discharges slowly, creating the characteristic lopsided sweep where the phaser snaps toward bright tones and drifts lazily back.
+- **Logarithmic resistance curve** -- The LDR resistance follows a logarithmic taper, not a linear one. This produces a perceptually even frequency sweep despite non-linear electrical behavior.
+- **Thermal memory effect** -- Each vactrol retains a small amount of residual charge from its previous cycle. At higher rates the stages never fully reset, shifting the operating point and subtly altering the sweep range from one cycle to the next.
+
+The four stages use 47 nF capacitance each. Feedback is soft-clipped through a tanh saturator before returning to the input, preventing runaway oscillation while adding harmonic warmth at high feedback settings.
+
+## Parameters
+
+Per-band phaser controls. Parameter IDs use the `bandN_` prefix (e.g., `band1_depth`, `band3_feedback`).
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| Depth | `depth` | 0.0--1.0 | 0.5 | Sweep range of the all-pass frequency modulation |
+| Feedback | `feedback` | 0.0--0.95 | 0.5 | Amount of output fed back to input (tanh-clipped) |
+| Phaser Mix | `mix` | 0.0--1.0 | 0.5 | Blend between dry signal and phased signal |
+| Rate | `rate` | 0.1--10.0 Hz | 0.5 | LFO speed driving the vactrol sweep |
+
+## LFO Section
+
+The LFO that drives the phaser operates in one of two modes.
+
+### Standard Mode
+
+Six classic waveforms:
+
+| Waveform | Character |
+|----------|-----------|
+| **Sine** | Smooth, symmetric sweep. The default phaser sound. |
+| **Triangle** | Linear ramp up and down. Slightly more aggressive transitions than sine. |
+| **Square** | Instant jumps between two frequency extremes. Produces a stepped, switching effect. |
+| **Saw Up** | Linear ramp from minimum to maximum, then instant reset. Asymmetric sweep -- slow rise, fast drop. |
+| **Saw Down** | Inverse of Saw Up. Fast rise, slow descent. |
+| **Random (S&H)** | Sample-and-hold -- jumps to a new random value at each LFO cycle. Creates unpredictable stepped modulation. |
+
+### Neural Mode
+
+A proprietary modulation system that generates organic, non-repeating modulation curves. Unlike periodic waveforms that cycle identically every period, Neural mode produces evolving shapes with a more musical, breathing quality -- subtle variations in timing, amplitude, and contour that never settle into a fixed loop.
+
+Neural mode is controlled by four dedicated parameters:
+
+| Parameter | ID Suffix | Range | Default | Description |
+|-----------|-----------|-------|---------|-------------|
+| Rhythm Strategy | `neuralRhythm` | 0.0--1.0 | 0.5 | Timing character of the modulation -- lower values produce steadier pulsing, higher values introduce more syncopated, irregular timing |
+| Articulation | `neuralArticulation` | 0.0--1.0 | 0.5 | Attack shape of each modulation event -- low values produce soft, rounded onsets; high values produce sharper, more percussive attacks |
+| Neural Depth | `neuralDepth` | 0.0--1.0 | 0.5 | Amplitude range of the generated modulation curve |
+| Temperature | `neuralTemperature` | 0.0--1.0 | 0.3 | Randomness and exploration -- low values stay close to predictable patterns, high values introduce more variation and surprise |
+
+| Parameter | ID Suffix | Range | Default |
+|-----------|-----------|-------|---------|
+| LFO Mode | `lfoMode` | Standard / Neural | Standard |
+
+<Note>
+The phaser LFO also drives the spatial panning orbit when Pan Depth is non-zero. Changing the LFO rate or switching to Neural mode affects both the phaser sweep and the spatial movement simultaneously. See [Spatial Panning](/chakraboost/interface/spatial) for details.
+</Note>

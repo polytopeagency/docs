@@ -1,0 +1,54 @@
+---
+title: Crossover Filter
+description: 8-band linear-phase FIR crossover with true stereo processing
+---
+
+# Crossover Filter
+
+CHAKRABOOST splits incoming audio into 8 frequency bands using a **linear-phase FIR crossover** built on windowed-sinc filter design with a Blackman window. The filter bank uses 255 taps, producing approximately **127 samples of latency** (~2.9ms at 44.1kHz).
+
+The crossover operates as **true stereo** — independent left and right filter banks process each channel separately, preserving the stereo image within every band. When bands are recombined after processing, the linear-phase design guarantees **phase-coherent reconstruction** with no comb filtering or phase smearing between adjacent bands.
+
+## The 8 Chakra Bands
+
+Each band is aligned to a traditional chakra frequency range:
+
+| Band | Chakra | Sanskrit | Frequency Range |
+|------|--------|----------|-----------------|
+| 0 | Root | Muladhara | 20–63 Hz |
+| 1 | Sacral | Svadhisthana | 63–125 Hz |
+| 2 | Solar Plexus | Manipura | 125–250 Hz |
+| 3 | Heart | Anahata | 250–500 Hz |
+| 4 | Throat | Vishuddha | 500–1000 Hz |
+| 5 | Third Eye | Ajna | 1000–2000 Hz |
+| 6 | Crown | Sahasrara | 2000–8000 Hz |
+| 7 | Transcendence | — | 8000–20000 Hz |
+
+Bands 0 and 7 are the lowest and highest shelves respectively. Bands 1–6 are bandpass filters defined by adjacent crossover frequencies.
+
+## Per-Band Controls
+
+Every band exposes four utility controls:
+
+| Control | Range | Default | Description |
+|---------|-------|---------|-------------|
+| **Gain** | −24 to +24 dB | 0 dB | Post-crossover level adjustment before phase modulation and compression |
+| **Solo** | On/Off | Off | Isolate this band — all other bands are muted |
+| **Mute** | On/Off | Off | Silence this band in the output mix |
+| **Bypass** | On/Off | Off | Pass this band through unprocessed — skips phaser, compressor, and spatial panning |
+
+Solo and Mute are exclusive — enabling Solo on a band implicitly mutes all others. Multiple bands can be soloed simultaneously to audition a subset.
+
+## Filter Design
+
+The windowed-sinc approach was chosen over IIR (Butterworth, Linkwitz-Riley) crossover designs for two reasons:
+
+1. **Linear phase** — No phase distortion at crossover frequencies. IIR crossovers introduce phase shifts that rotate the stereo image differently per band, which would interfere with CHAKRABOOST's per-band spatial panning.
+
+2. **Perfect reconstruction** — When all 8 bands are summed with unity gain and no processing, the output matches the input within floating-point precision. This means the Dry/Wet control produces a true mix between processed and unprocessed signal with no coloration at intermediate settings.
+
+The 255-tap Blackman window provides steep transition bands (~74 dB stopband attenuation) with minimal Gibbs ringing.
+
+<Note>
+The ~127 sample latency is reported to the host DAW for automatic plugin delay compensation. In most DAWs, this is handled transparently. If you experience timing issues, verify that your DAW's delay compensation is enabled.
+</Note>

@@ -1,0 +1,79 @@
+---
+title: Interface Overview
+description: Layout and navigation of the CHAKRABOOST plugin window
+---
+
+# Interface Overview
+
+CHAKRABOOST's interface is organized around a central rosette visualizer flanked by the band control panel, with a band selector strip across the top and a master strip along the bottom.
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [ 1 ][ 2 ][ 3 ][ 4 ][ 5 ][ 6 ][ 7 ][ 8 ]   Band Selector Strip │
+├────────┬────────────────────────────────┬────────┬──────────────────┤
+│        │                                │        │                  │
+│  IN    │                                │  OUT   │   BAND CONTROL   │
+│  L/R   │     CENTRAL VISUALIZER         │  L/R   │   PANEL          │
+│  METER │                                │  METER │                  │
+│        │     (Leadbeater Rosette)       │        │  ┌────────────┐  │
+│        │                                │        │  │  Phaser    │  │
+│        │                                │        │  │  Compress  │  │
+│        │                                │        │  │  Spatial   │  │
+│        │                                │        │  └────────────┘  │
+├────────┴────────────────────────────────┴────────┴──────────────────┤
+│  [Input Gain]  [Output Gain]  [Dry/Wet]  [Bypass]   Master Strip   │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+## Band Selector Strip
+
+Eight color-coded buttons across the top of the window, one per chakra band. Click a band to select it and load its parameters into the band control panel. The active band is highlighted; inactive bands dim but still show activity indicators when processing audio.
+
+| Band | Color | Frequency Region |
+|------|-------|-----------------|
+| 1 | Red | Sub / Low bass |
+| 2 | Orange | Bass |
+| 3 | Yellow | Low mid |
+| 4 | Green | Mid |
+| 5 | Blue | Upper mid |
+| 6 | Indigo | Presence |
+| 7 | Violet | Brilliance |
+| 8 | White | Air |
+
+## Central Visualizer
+
+The Leadbeater rosette stack displays real-time activity across all eight bands as layered, concentric rosette patterns. Each band's rosette ring pulses and rotates in response to its phaser LFO, compression gain reduction, and spatial position. The composite view gives an immediate read on the spectral and spatial state of the entire signal.
+
+## Band Control Panel
+
+The right-hand panel displays all per-band parameters for the currently selected band, organized into three collapsible sections:
+
+- **[Phaser](/chakraboost/interface/phaser)** -- Vactrol phaser depth, feedback, rate, mix, and LFO mode (standard or neural).
+- **[Compression](/chakraboost/interface/compression)** -- Adaptive parallel compression with threshold, ratio, attack, release, and mix.
+- **[Spatial](/chakraboost/interface/spatial)** -- Pan position, modulation depth, orbit angle, and surround layout.
+
+Switching bands via the selector strip updates all controls in this panel to reflect the selected band's current values.
+
+## Stereo Meters
+
+Two vertical LED-style meters are positioned on either side of the central visualizer:
+
+- **Input meters** (left) -- Stereo L/R levels before any processing.
+- **Output meters** (right) -- Stereo L/R levels after the full processing chain.
+
+Both meter pairs include peak hold indicators and clip LEDs.
+
+## Master Strip
+
+A horizontal strip along the bottom containing global controls that affect the summed output of all eight bands:
+
+| Control | Description |
+|---------|-------------|
+| **Input Gain** | Pre-processing level adjustment |
+| **Output Gain** | Post-processing level adjustment |
+| **Dry/Wet** | Global mix between unprocessed and processed signal |
+| **Bypass** | Hard bypass -- routes input directly to output with no processing |
+
+<Note>
+All per-band parameters are fully independent. Each band has its own phaser, compressor, and spatial settings. The master strip controls apply after the eight bands are summed to the output bus.
+</Note>

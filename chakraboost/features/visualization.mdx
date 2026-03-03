@@ -1,0 +1,58 @@
+---
+title: Visualization
+description: Leadbeater-inspired chakra rosettes with real-time DSP mapping
+---
+
+# Visualization
+
+CHAKRABOOST renders each frequency band as a **Leadbeater-inspired chakra rosette** — a circle with radiating spokes matching the traditional petal counts described in C. W. Leadbeater's observations of the energy centers. The rosettes respond in real-time to every dimension of the DSP state, making the effect audible *and* visible simultaneously.
+
+## Rosette Petal Counts
+
+Each band's rosette draws a specific number of radiating spokes corresponding to the traditional petal count for that chakra:
+
+| Band | Chakra | Petals | Color |
+|------|--------|--------|-------|
+| Root | Muladhara | 4 | Red |
+| Sacral | Svadhisthana | 6 | Orange |
+| Solar Plexus | Manipura | 10 | Yellow |
+| Heart | Anahata | 12 | Green |
+| Throat | Vishuddha | 16 | Light Blue |
+| Third Eye | Ajna | 96 | Indigo |
+| Crown | Sahasrara | 192 | Violet |
+| Transcendence | — | 1 | White |
+
+Colors follow the traditional chakra color mapping. The Transcendence band uses a single point of white light — representing unity beyond the sevenfold system.
+
+## DSP-to-Visual Mapping
+
+Every visual property of the rosettes is driven by a DSP parameter:
+
+| DSP Parameter | Visual Effect |
+|---------------|---------------|
+| **LFO Rate** | Spin speed — faster LFO rates cause the rosette to rotate more quickly |
+| **Depth** | Spoke expansion — higher depth pushes spokes outward from the center |
+| **Feedback** | Trail ghosts — higher feedback renders fading afterimages behind each spoke |
+| **Mix** | Spoke opacity — at 0% mix the rosette is fully transparent, at 100% fully opaque |
+| **Pan Position** | Horizontal offset — the rosette moves left or right to reflect its stereo position |
+| **Gain Reduction** | Vertical squash — active compression visually compresses the rosette vertically |
+| **Band Level** | Brightness + center dot size — louder bands glow brighter with a larger center point |
+
+Rosettes are intentionally **oversized** and will overlap with neighboring bands when depth values are high. This is by design — the visual density reflects the spectral density of the processing. Click any rosette to select that band for editing.
+
+## Metering
+
+In addition to the rosette display, CHAKRABOOST provides conventional metering:
+
+### Stereo Input/Output Meters
+Peak-hold stereo meters for the global input and output levels. These reflect the signal before and after all processing (including the global Input Gain and Output Gain controls).
+
+### Per-Band Level Meters
+Each band displays its own level meter showing the post-crossover signal level. These meters are visible alongside or beneath the rosette for that band.
+
+### Gain Reduction Display
+Each band's compressor shows its current gain reduction amount. When compression is active, the gain reduction is displayed both numerically and through the vertical squash of the rosette visualization.
+
+<Note>
+The visualization is GPU-accelerated. On systems without dedicated GPU support, the rosettes will still render but may use simplified geometry (reduced petal counts for Third Eye and Crown) to maintain frame rate.
+</Note>

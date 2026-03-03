@@ -1,0 +1,51 @@
+---
+title: What is CHAKRABOOST?
+description: An 8-band spatial multipanner with vactrol phaser and adaptive compression
+---
+
+# CHAKRABOOST: Spatial Multipanner Phase Modulator
+
+CHAKRABOOST is an 8-band spatial multipanner that combines three distinct DSP domains per band: phase modulation, dynamics processing, and spatial positioning. Each frequency band is aligned to a traditional chakra frequency range, from Root (20-63 Hz) through Transcendence (8000-20000 Hz).
+
+Where most multiband processors treat bands as isolated gain stages, CHAKRABOOST operates as a **per-band spatial effects engine** — applying a vactrol-modeled phaser, adaptive parallel compression, and LFO-driven surround panning independently to each of the 8 chakra bands.
+
+## The Processing Pipeline
+
+Every audio band in CHAKRABOOST passes through three stages:
+
+1. **Phase Modulation** — A 4-stage vactrol-modeled phaser per band, faithfully modeling the LED/LDR optocoupler behavior of the Ibanez FP-777 Flying Pan. Six standard LFO waveforms (sine, triangle, saw, reverse saw, square, random) plus a Neural LFO mode that uses a proprietary modulation system to produce organic, evolving modulation curves that escape the mechanical repetition of standard waveforms.
+
+2. **Adaptive Compression** — Parallel compression per band with real-time crest-factor analysis. The compressor continuously adapts its behavior based on the dynamic profile of each band, blending compressed and dry signals for transparent density control without destroying transients.
+
+3. **Spatial Panning** — Per-band stereo or surround positioning with LFO-driven orbital motion. Four speaker layouts are supported: Stereo, Quad, 5.1, and 7.1. Each band can follow its own spatial trajectory, creating immersive frequency-dependent movement across the soundfield.
+
+## The 8 Chakra Bands
+
+| Band | Chakra | Frequency Range | Rosette Petals |
+|------|--------|----------------|----------------|
+| 1 | Root | 20–63 Hz | 4 |
+| 2 | Sacral | 63–125 Hz | 6 |
+| 3 | Solar Plexus | 125–250 Hz | 10 |
+| 4 | Heart | 250–500 Hz | 12 |
+| 5 | Throat | 500–1000 Hz | 16 |
+| 6 | Third Eye | 1000–2000 Hz | 96 |
+| 7 | Crown | 2000–8000 Hz | 192 |
+| 8 | Transcendence | 8000–20000 Hz | 1 |
+
+The crossover network splitting audio into these 8 bands uses a **true stereo FIR filter bank** with linear-phase response and 255 taps, ensuring phase-coherent reconstruction when bands are summed back together.
+
+## Visualization
+
+CHAKRABOOST renders each band as a **Leadbeater-inspired chakra rosette** with the traditional petal counts from C. W. Leadbeater's descriptions of the energy centers. The rosettes are GPU-accelerated and respond in real-time to the audio level, phase modulation depth, and spatial position of each band.
+
+## Key Capabilities
+
+- **8 chakra-aligned frequency bands** from Root (20 Hz) through Transcendence (20 kHz)
+- **4-stage vactrol-modeled phaser** per band with 6 LFO waveforms + Neural LFO mode (proprietary modulation)
+- **Adaptive parallel compression** per band with crest-factor analysis
+- **Spatial panning per band** across stereo, quad, 5.1, and 7.1 speaker layouts with LFO-driven orbits
+- **True stereo FIR crossover** with linear-phase, 255-tap filter bank
+- **GPU-accelerated Leadbeater rosette visualization** with real-time audio reactivity
+- **Per-band solo/mute** and modulation lock for focused editing
+- **~127 samples latency** (~2.9ms at 44.1kHz)
+- **VST3, Audio Unit, and Standalone** formats on macOS
