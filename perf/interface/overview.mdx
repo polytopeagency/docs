@@ -1,0 +1,50 @@
+---
+title: Interface Overview
+description: Layout and navigation of the PERF plugin window
+---
+
+# Interface Overview
+
+PERF's interface is organized around four parameter cards surrounding a central radial visualizer, with a status bar along the bottom.
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [MIDI Activity]                    PERF                            │
+├──────────────┬──────────────────────────────┬───────────────────────┤
+│              │                              │                       │
+│   RHYTHM     │                              │   EXPRESSION          │
+│   ENGINE     │                              │   CONTROLLER          │
+│              │     CENTRAL VISUALIZATION    │                       │
+│──────────────│                              │───────────────────────│
+│              │     (Radial Perforation)     │                       │
+│ PERFORATION  │                              │  PITCH LOGIC          │
+│   ENGINE     │                              │                       │
+│              │                              │                       │
+├──────────────┴──────────────────────────────┴───────────────────────┤
+│  Layers: 8/12  |  Events: 234  |  State: 1/4  |  [Export]          │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+## The Four Cards
+
+### Left Column
+- **Rhythm Engine** (top left) — Controls *when* notes occur. Select from 12 rhythm generation techniques and adjust density, note length, compression, and swing.
+- **Perforation Engine** (bottom left) — Controls which notes are *removed*. Select from 7 mathematical filtering strategies and adjust perforation amount, rotation, and layer interaction mode.
+
+### Right Column
+- **Expression Controller** (top right) — Controls *how* notes are articulated. Velocity range, articulation style, CC controllers, micro-timing, and phrase structure.
+- **Pitch Logic** (bottom right) — Controls *what* notes play. Scale selection from 112+ scales, root note, octave span, and 10 pitch selection algorithms.
+
+## Central Visualization
+
+The radial visualizer displays all 12 layers as concentric rings. Active notes appear as colored arcs; perforated (removed) notes appear as faint outlines. A rotating playhead sweeps through the circle, triggering notes as it passes.
+
+The visualization supports 8 color analysis modes — from greyscale to Scriabin's synesthetic color mapping. See [Visualization](/features/visualization) for details.
+
+## Bottom Bar
+
+- **Layer count** — Active layers out of 12
+- **Event count** — Total MIDI events generated
+- **State position** — Current section in the state sequence
+- **Generation toggle** — Master on/off for MIDI generation
+- **Export** — Write generated MIDI to file

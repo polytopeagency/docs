@@ -1,0 +1,82 @@
+---
+title: Tips & Recipes
+description: Composition recipes, workflow suggestions, and gotchas
+---
+
+# Tips & Recipes
+
+## Composition Recipes
+
+### Minimal Texture
+- **Rhythm:** Euclidean, density 0.5–1.5
+- **Perforation:** Golden Ratio at 50–60%, Golden Angle mode on
+- **Pitch:** Kumoi or Iwato scale, Sequential pattern
+- **Layers:** 3–4 in Complementary mode
+- **Expression:** Tenuto articulation, low velocity range (40–70)
+
+Sparse, interlocking patterns over a Japanese pentatonic. Route each layer to a different instrument for a chamber-like texture.
+
+### Dense Stochastic Cloud
+- **Rhythm:** Random or Cloud, density 4–10
+- **Perforation:** Cellular (Rule 30) at 30–40%
+- **Pitch:** Chromatic or Whole Tone, Probabilistic pattern with high Leap
+- **Layers:** 8–12 in Independent mode
+- **Expression:** Staccato, wide velocity range (20–127)
+
+Maximum density and independence. Works as a textural wash — route to a reverberant pad or granular synth.
+
+### Polyrhythmic Hocket
+- **Rhythm:** Polyrhythm (ratio 3:5) or Euclidean
+- **Perforation:** Euclidean at 40%
+- **Pitch:** Major Pentatonic, Golden Ratio pattern
+- **Layers:** 6–8 in Complementary mode
+- **Expression:** Legato, narrow velocity range (70–100)
+
+Interlocking rhythmic cells passed between layers. The hocket behavior creates a single continuous line from multiple voices.
+
+### Evolving Long-Form
+- **State Machine:** Auto-Evolve on, 6 sections, 90-second section length, 60% crossfade, Arch form
+- **Rhythm:** Start with any technique — the state machine will vary parameters
+- **Pitch:** Yaman or Melodic Minor for rich harmonic material
+- **Layers:** 8 in Cascade mode
+
+Let PERF run for 8–10 minutes. Record the MIDI output and edit the result into a finished composition.
+
+### Fibonacci Canon
+- **Rhythm:** Additive (Fibonacci-like durations)
+- **Perforation:** Fibonacci at 25%
+- **Pitch:** Fibonacci Intervallic pattern, Harmonic Minor scale
+- **Layers:** 4–6 in Cascade mode
+
+Self-similar at every level — Fibonacci durations, Fibonacci perforation, Fibonacci intervals, canon-like layer entries.
+
+## Workflow Tips
+
+### Layering with DAW instruments
+Route different PERF layers to different instruments. Layer 1→piano, Layer 2→strings, Layer 3→woodwinds. The family behavior determines how these parts interrelate.
+
+### Using preset morphing for transitions
+Set Preset A to a sparse, quiet configuration and Preset B to a dense, active one. Automate `presetMorph` from 0→1 over 16 bars for a smooth build.
+
+### Capturing variations
+Run PERF multiple times with the same settings — the stochastic elements ensure each generation is different while maintaining the same structural character. Record multiple takes and comp the best moments.
+
+### Scale as compositional tool
+Changing the scale mid-composition (via automation) creates harmonic shifts while maintaining rhythmic continuity. Try automating from Major to Phrygian for a sudden darkening.
+
+## Gotchas
+
+### No sound?
+PERF generates MIDI, not audio. You need a virtual instrument downstream to produce sound. Check your DAW's MIDI routing.
+
+### Stuck notes
+If you hear stuck notes after stopping transport, it's usually a DAW routing issue. PERF sends all pending note-offs when transport stops. Try toggling Generation off and on.
+
+### Very dense output
+At high density (8–10 attacks/beat) with many layers and low perforation, PERF can produce extremely dense MIDI. If your instrument struggles, reduce active layers or increase perforation amount.
+
+### State machine not working
+Auto-Evolve must be turned **on** for the state machine to control parameters. When off, the UI sliders control everything directly.
+
+### Corpus engines showing different behavior
+The Corpus Density (perforation) and Corpus (pitch) algorithms use embedded MusicBERT data. If the data failed to load, they fall back to Euclidean perforation and Probabilistic pitch respectively. Check the plugin console output for loading messages.

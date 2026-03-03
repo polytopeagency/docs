@@ -1,0 +1,88 @@
+---
+title: Algorithm Reference
+description: All 29 algorithms in one place — rhythm, perforation, and pitch
+---
+
+# Algorithm Reference
+
+Quick reference for all algorithms across PERF's three engine types. For detailed descriptions and lineage, see the individual interface pages.
+
+## Rhythm Engines (12)
+
+| # | Name | ID in DAW | Core Principle |
+|---|------|-----------|----------------|
+| 0 | Random | `Random` | Exponentially-distributed stochastic inter-onset intervals |
+| 1 | Polyrhythm | `Polyrhythm` | Schillinger resultant from two periodic generators at ratio A:B |
+| 2 | Phasing | `Phasing` | Gradually shifting phase between two pulse streams |
+| 3 | Grouping | `Grouping` | Variable-size note clusters (e.g., 5-3-2 pattern) |
+| 4 | Cloud | `Cloud` | Density field modulated by overlapping incommensurate sine waves |
+| 5 | Euclidean | `Euclidean` | Bjorklund algorithm — N pulses distributed maximally-evenly over M steps |
+| 6 | Harmonic | `Harmonic` | Overtone-series pulse streams at ratios 1:2:3:...N |
+| 7 | Power Seq | `Power Seq` | Group sizes from mathematical progressions (squares, powers, triangular) |
+| 8 | Counterpoint | `Counterpoint` | Two independent generators with synchrony detection |
+| 9 | Additive | `Additive` | Fibonacci-like: each duration = sum of two previous |
+| 10 | L-System | `L-System` | Lindenmayer string rewriting → fractal rhythm sequences |
+| 11 | Beat Grid | `Beat Grid` | 16-step seed expanded by Markov chain each bar |
+
+## Perforation Engines (7)
+
+| # | Name | ID in DAW | Core Principle |
+|---|------|-----------|----------------|
+| 0 | Euclidean | `Euclidean` | Maximally-even gap distribution (Bjorklund) |
+| 1 | Prime Sieve | `Prime Sieve` | Sieve of Eratosthenes — remove at prime-divisible positions |
+| 2 | Fibonacci | `Fibonacci` | Zeckendorf decomposition — fewer Fibonacci terms = more protected |
+| 3 | Modular | `Modular` | Keep events at index mod N = offset |
+| 4 | Golden Ratio | `Golden Ratio` | Quasiperiodic phi-based lattice / golden angle phyllotaxis |
+| 5 | Cellular | `Cellular` | Wolfram elementary cellular automaton (rules 0–255) |
+| 6 | Corpus Density | `Corpus Density` | MusicBERT-derived rest placement curves |
+
+## Pitch Patterns (10)
+
+| # | Name | ID in DAW | Core Principle |
+|---|------|-----------|----------------|
+| 0 | Sequential | `Sequential` | Serial exhaustion — all pitches before any repeat |
+| 1 | Spiral | `Spiral` | Expanding intervals outward from center pitch |
+| 2 | Fibonacci | `Fibonacci` | Fibonacci interval sequence (1,1,2,3,5,8,13,21) |
+| 3 | Register | `Register` | Systematic octave-by-octave traversal |
+| 4 | Probabilistic | `Probabilistic` | Weighted Markov transitions (close intervals favored) |
+| 5 | Golden Ratio | `Golden Ratio` | Pitch set split at phi, alternating subsets |
+| 6 | Beating | `Beating` | Interference of two interval generators → resultant pitch set |
+| 7 | Mirror | `Mirror` | Alternating original and inverted pitches around axis |
+| 8 | Permutation | `Permutation` | Circular, retrograde, and retrograde-inversion orderings |
+| 9 | Corpus | `Corpus` | MusicBERT-derived pitch transition matrices |
+
+## Layer Interaction Modes (4)
+
+| # | Name | Behavior |
+|---|------|----------|
+| 0 | Independent | No inter-layer coordination |
+| 1 | Inverse | More active when other layers are quiet |
+| 2 | Complementary | Fill gaps in other layers (hocket) |
+| 3 | Synchronized | Gaps align across layers |
+
+## Articulation Styles (5)
+
+| # | Name | Duration Multiplier |
+|---|------|-------------------|
+| 0 | Full Length | 1.0 |
+| 1 | Legato | 0.80–0.95 |
+| 2 | Staccato | 0.20–0.40 |
+| 3 | Tenuto | 0.95–1.00 |
+| 4 | Varying | 0.85→0.35 (progressive) |
+
+## Color Modes (8)
+
+| # | Name | Maps To |
+|---|------|---------|
+| 0 | Greyscale | Velocity/dynamics only |
+| 1 | Chromatic | Pitch class (perceptually uniform palette) |
+| 2 | Register | Octave register (dark = low, bright = high) |
+| 3 | Interval | Interval from lowest active pitch |
+| 4 | Tension | Consonance-dissonance score |
+| 5 | Schillingerian | 12 saturated pitch-class colors |
+| 6 | Scriabin | Synesthetic color-hearing associations |
+| 7 | Rimsky-Korsakov | Key-color landscape associations |
+
+## Combination Count
+
+With 12 rhythm engines × 7 perforation methods × 10 pitch patterns × 4 layer interaction modes × 5 articulation styles = **16,800** unique algorithm combinations before considering parameter variations, scale selection, or state machine configuration.

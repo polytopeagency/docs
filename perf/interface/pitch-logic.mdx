@@ -1,0 +1,69 @@
+---
+title: Pitch Logic
+description: 10 pitch selection algorithms and 112+ scale library
+---
+
+# Pitch Logic
+
+The Pitch Logic card determines *what* notes play. It combines a **scale selection** system (112+ scales) with a **pitch pattern algorithm** (10 methods) that decides how pitches are chosen from the scale.
+
+All pitch patterns are streaming — they maintain internal state and produce the next pitch in O(1) time.
+
+## Pitch Pattern Algorithms
+
+| Algorithm | What It Does | Lineage |
+|-----------|-------------|---------|
+| **Sequential** | All pitches in the set must sound before any can repeat (with octave displacement allowed). Ensures chromatic completeness within each cycle. Each pattern parameter controls the spread of octave displacement. | *Schoenberg, twelve-tone technique (1923). Serial exhaustion — aggregate completion as structural principle. Extended here to any pitch set, not just the chromatic.* |
+| **Spiral** | Spirals outward from a center pitch, alternating above and below in expanding intervals. Creates a widening melodic cone. The center pitch is configurable. | *Xenakis, arborescences — tree-like branching pitch structures (Evryali, 1973). Spiral motion as generative principle.* |
+| **Fibonacci** | Next pitch determined by Fibonacci interval sequence (1, 1, 2, 3, 5, 8, 13, 21 semitones). Direction reverses when pitch boundaries are reached. Pattern parameter scales the interval magnitudes. | *Fibonacci sequence. Bartók's intervallic proportions. Lendvai's golden section analyses of Bartók's pitch structures.* |
+| **Register** | Systematic traversal through octave registers — plays through all pitches in one octave before moving to the next. Traversal order varies from sequential to shuffled based on the pattern parameter. | *Messiaen's modes of limited transposition — systematic register exploration. Registral stratification in Webern.* |
+| **Probabilistic** | Weighted probability transitions where closer intervals have higher probability. Pattern parameter (Leap) shifts the bias from stepwise motion toward large leaps. | *Xenakis, Markov chains in music (Analogique A, 1958). Hiller & Isaacson, Illiac Suite (1957) — first computer-generated composition using Markov chains.* |
+| **Golden Ratio** | Divides the pitch set at the golden ratio point (φ ≈ 0.618), creating two subsets. Alternates between subsets, cycling through each independently. Pattern parameter adjusts the split point. | *Golden section applied to pitch-space partitioning. Proportional subdivision as melodic generator.* |
+| **Beating** | Constructs a pitch set from the interference of two interval generators. All pitches satisfying (root + n×A + m×B) mod 12 are collected, producing combination-tone-derived scales. Pattern parameter adjusts the generating intervals. | *Grisey and Murail, spectral music (Partiels, 1975). Combination tones and resultant pitch sets from interval interference.* |
+| **Mirror** | Alternates between original pitches and their inversion around a configurable axis pitch (2×axis − pitch). Creates palindromic pitch contours. Pattern parameter sets the axis. | *Serial inversion technique (Schoenberg, Webern). Symmetric pitch structures — Bartók's axis of symmetry system.* |
+| **Permutation** | Systematic reordering of the pitch set through circular rotations, retrograde, retrograde-inversion, or all transformations. Pattern parameter selects the variant. | *Combinatorial twelve-tone technique (Babbitt). Permutation groups applied to pitch ordering — exhaustive traversal of set transformations.* |
+| **Corpus** | Pitch transitions learned from MusicBERT analysis of 3.44 million MIDI files. Uses pitch-class transition matrices extracted from the pre-trained model. Context parameter biases toward ascending motion, stepwise motion, or large leaps. Falls back to Probabilistic behavior if no corpus data is loaded. | *MusicBERT (Zeng et al., 2021). Statistical learning of pitch transitions from large-scale musical corpora.* |
+
+## Parameters
+
+| Parameter | ID | Range | Default | Description |
+|-----------|----|-------|---------|-------------|
+| Pitch Selection | `pitchPatternType` | 0–9 | 0 | Algorithm selection |
+| Pitch Pattern Shape | `pitchPatternParam` | 0.0–1.0 | 0.5 | Algorithm-specific control (see table below) |
+| Scale | `scaleIndex` | 0–150 | 0 | Scale selection from library |
+| Root Pitch Class | `pitchClass` | 0–11 | 0 (C) | Root note (C, C#, D, ... B) |
+| Starting Octave | `octave` | −1–9 | 3 | Base octave for pitch set |
+| Octave Span | `octaveSpan` | 1–10 | 4 | Number of octaves to span |
+| Custom Pitch Classes | `customPitchClasses` | 0–4095 | 4095 | Bitmask for custom scale (bit 0=C through bit 11=B) |
+
+### Pattern Parameter Meanings
+
+The `pitchPatternParam` slider controls different aspects depending on the active algorithm:
+
+| Algorithm | Parameter Label | Effect |
+|-----------|----------------|--------|
+| Sequential | Spread | Octave displacement range |
+| Spiral | Center | Center pitch position |
+| Fibonacci | Range | Interval magnitude scaling |
+| Register | Order | Sequential ↔ shuffled traversal |
+| Probabilistic | Leap | Stepwise ↔ leaping bias |
+| Golden Ratio | Split | Split point adjustment |
+| Beating | Interval | Generating interval adjustment |
+| Mirror | Axis | Inversion axis position |
+| Permutation | Variant | Transformation type selection |
+| Corpus | Context | Motion bias (ascending / stepwise / leaping) |
+
+## Scale Library
+
+PERF includes 112+ scales spanning:
+
+- **Western modes** — Major, Minor, Dorian, Phrygian, Lydian, Mixolydian, Locrian, Harmonic Minor, Melodic Minor
+- **Pentatonic and blues** — Major Pentatonic, Minor Pentatonic, Blues
+- **Symmetric** — Whole Tone, Chromatic, Diminished, Double Diminished
+- **Japanese** — Kumoi, Iwato, Hon-Kumoi-Joshi, Banshiki-Cho, Naka Zora, Noh, Kokin-Choshi, Shimo-Chidori, and more
+- **Indian ragas** — Yaman, Bhairavi, Todi, Marwa, Lalit, Hindole, Kafi, and more
+- **Yusef Lateef's Repository** — Mono-quality triads, quartal formations, hetero-quality triads, mutated hexadic scales, intervallic mutations, and synthetic constructions
+- **Ancient** — Archaic Greek, Chinese Reform, Mongolian
+- **Custom** — User-defined pitch class set via bitmask
+
+See [Scale Reference](/reference/scales) for the complete list with descriptions.

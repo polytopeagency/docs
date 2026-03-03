@@ -1,0 +1,47 @@
+---
+title: State Machine
+description: Sections, crossfade, arc forms, and macro compositional shapes
+---
+
+# State Machine
+
+The State Machine provides **macro-level compositional form**. It divides a performance into sections (states), each with its own parameter settings, and crossfades between them to create evolving compositional arcs.
+
+When **Auto-Evolve** is enabled, PERF automatically progresses through the state sequence based on elapsed time, smoothly interpolating all parameters between adjacent states.
+
+## How It Works
+
+1. PERF generates a sequence of 2–8 **sections**, each with a randomized but musically coherent set of parameters (density, perforation, velocity, pitch range, etc.)
+2. The state sequencer progresses through these sections over time
+3. A configurable **crossfade** ratio determines how gradually parameters transition between sections
+4. The result is a composition that evolves — building, releasing, shifting character — without manual automation
+
+## Parameters
+
+| Parameter | ID | Range | Default | Description |
+|-----------|----|-------|---------|-------------|
+| Auto-Evolve | `useStateParams` | On/Off | Off | Enable automatic state progression |
+| Sections | `numStates` | 2–8 | 4 | Number of sections in the sequence |
+| Section Length | `avgStateDuration` | 15–180 sec | 60 sec | Average duration per section |
+| Section Crossfade | `gradualRatio` | 0–100% | 50% | How much of each section is spent transitioning (0% = instant switch, 100% = fully gradual) |
+| Arc Form | `arcForm` | Random / Golden Section / Arch / Wedge / Corpus | Random | Overall shape of parameter evolution |
+| Arc Position | `stateProgress` | 0.0–1.0 | 0.0 | Manual override for position in the arc |
+| Auto Arc Progress | `autoStateProgress` | On/Off | On | Use time-based progression vs manual position |
+
+## Arc Forms
+
+| Form | Description |
+|------|-------------|
+| **Random** | Each section's parameters are independently randomized. Creates unpredictable, exploratory form. |
+| **Golden Section** | Climax point placed at the golden ratio (≈62%) through the sequence. Parameters build toward this point, then recede. |
+| **Arch** | Symmetric arch — parameters build to a midpoint climax, then mirror the descent. Classical ABA proportions. |
+| **Wedge** | Continuous build from sparse to dense (or vice versa). One-directional parameter evolution. |
+| **Corpus** | Section transitions learned from MusicBERT analysis. Applies statistically natural formal proportions. |
+
+## Manual Control
+
+When **Auto Arc Progress** is off, the `stateProgress` parameter (Arc Position) directly controls position in the state sequence. This is automatable from your DAW — you can draw automation curves to manually shape the macro form, or use MIDI CC to control it in real-time.
+
+<Tip>
+The State Machine works well for generating long-form compositions. Set Sections to 6–8, Section Length to 60–120 seconds, Crossfade to 50%, and let PERF evolve for 5–10 minutes. Record the MIDI output and edit the result.
+</Tip>

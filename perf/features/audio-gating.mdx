@@ -1,0 +1,33 @@
+---
+title: Audio Gating
+description: Apply perforation patterns to live audio input
+---
+
+# Audio Gating
+
+PERF can apply its perforation patterns to **live audio input**, not just generated MIDI. This turns PERF into a rhythmic gate — the same mathematical structures that create holes in MIDI sequences can carve gaps in audio signals.
+
+## How It Works
+
+PERF accepts up to 12 audio input channels. Each channel is paired with a layer's perforation engine. When a layer's perforation pattern says "remove this event," the corresponding audio channel is gated (silenced). When the pattern says "keep," the audio passes through.
+
+The result is audio that has been rhythmically sculpted by Euclidean distributions, Fibonacci patterns, cellular automata, or any of PERF's 7 perforation methods.
+
+## Setup
+
+1. Route audio into PERF's input bus (up to 12 channels)
+2. PERF's perforation engines gate the audio in real-time
+3. Gated audio appears on PERF's output bus
+
+The perforation amount, method, and layer interaction settings all affect the audio gating behavior, just as they affect MIDI generation.
+
+## Use Cases
+
+- **Rhythmic slicing** of pads, drones, or sustained textures
+- **Mathematical stuttering** of vocal or melodic content
+- **Polyrhythmic gating** across multiple audio sources using different layers
+- **Live performance** gating synchronized to DAW transport
+
+<Note>
+Audio gating uses the same perforation engines as MIDI generation. Changing the perforation method or amount affects both the MIDI output and the audio gating simultaneously.
+</Note>

@@ -1,0 +1,29 @@
+---
+title: Visualization
+description: 8 color analysis modes with compositional lineage
+---
+
+# Visualization
+
+PERF's central radial visualizer displays all active layers as concentric rings on a circular canvas. Active notes appear as colored arcs; perforated (removed) notes appear as faint dashed outlines. A rotating playhead sweeps through the circle, triggering notes as it passes.
+
+The visualizer is GPU-accelerated using instanced OpenGL rendering — approximately 5 draw calls per frame versus thousands with traditional rendering, maintaining 30 fps even with hundreds of simultaneous events.
+
+## Color Modes
+
+The color mode slider selects how pitch, register, interval, and harmonic relationships are mapped to color. Each mode draws from a different tradition of sound-color association.
+
+| Mode | What It Does | Lineage |
+|------|-------------|---------|
+| **Greyscale** | Brightness maps to velocity/dynamics only. No pitch-color mapping. Pure structural visualization — like an architectural drawing or engraved score. | *Monochrome notation tradition. Focus on rhythm and density without chromatic distraction.* |
+| **Chromatic** | Each pitch class (C through B) receives a distinct color from a perceptually uniform, colorblind-safe palette. All 12 pitch classes are visually distinguishable regardless of register. | *Paul Tol's qualitative color schemes for scientific visualization. Equal perceptual distance between colors.* |
+| **Register** | Color maps to octave register — low pitches are dark, high pitches are bright. Pitch class is irrelevant; only vertical position in frequency space matters. | *Orchestral register thinking — bass instruments as dark timbres, treble instruments as bright. Spectral density visualization.* |
+| **Interval** | Color maps to the interval between each note and the lowest currently active pitch. Unisons and octaves share colors; wider intervals are more distinct. | *Interval-class analysis. Forte's pitch-class set theory — relationships between pitches rather than absolute pitch.* |
+| **Tension** | Color maps to a consonance-dissonance score. Consonant intervals (octaves, fifths, fourths) are cool/muted; dissonant intervals (tritones, minor seconds) are warm/saturated. The texture's harmonic tension becomes visible. | *Hindemith's consonance-dissonance gradient (Series 1 and 2, The Craft of Musical Composition). Helmholtz's roughness theory.* |
+| **Schillingerian** | 12 fully saturated colors mapped to pitch classes following Schillinger's color-tone correspondence. Each pitch class receives a single, vivid, unambiguous hue. Bold, high-contrast visualization. | *Schillinger, The Schillinger System of Musical Composition. Systematic 12-color mapping for visual analysis of pitch-class usage and distribution.* |
+| **Scriabin** | Pitch classes mapped to colors following Alexander Scriabin's synesthetic color-hearing associations, as documented in Prometheus: The Poem of Fire (1910). C = red, G = orange, D = yellow, A = green, E = blue, B = pale blue, F# = bright blue, Db = violet, Ab = purple, Eb = steel, Bb = rose, F = deep red. | *Scriabin's synesthesia and color-tone theory. Prometheus: The Poem of Fire (1910) — first composition to include a notated color part (Luce). The clavier à lumières.* |
+| **Rimsky-Korsakov** | Pitch classes mapped to the key-color associations described by Nikolai Rimsky-Korsakov in his autobiography. Keys evoke landscape and weather: C major = white, D major = gold/sunny, Eb major = dark/grey, E major = blue/sapphire, F major = green, and so on. | *Rimsky-Korsakov, My Musical Life (1909). Orchestral color thinking — keys as landscapes. The Russian tradition of associating tonality with visual sensation (shared partially with Scriabin's teacher, Safonov).* |
+
+<Note>
+The color mode is a visualization parameter only — it does not affect the generated MIDI output. Switch freely between modes to analyze different aspects of the texture in real-time.
+</Note>
