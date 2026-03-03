@@ -7,70 +7,82 @@ description: Processing recipes, workflow suggestions, and gotchas
 
 ## Processing Recipes
 
-### Subtle Stereo Widening
+### Subtle Stereo Movement
 - **Phaser:** Low depth (0.1–0.2), moderate mix (30–40%)
 - **LFO:** Sine waveform, slow rate (0.2–0.5 Hz)
 - **Spatial:** Wide pan depth (0.5–0.8) across bands — pan low bands slightly left, high bands slightly right
 - **Compression:** Off (comp mix 0%)
+- **Dry/Wet:** 20–40%
 
-Gentle per-band phase movement with opposing pan positions creates a wide, natural stereo image without artifacts. Works well on master bus or submixes.
+Gentle per-band phase movement with opposing pan positions creates a wide, evolving stereo image. Not mono-safe — use on a send or committed print if mono compatibility matters.
 
 ### Aggressive Multiband Phasing
 - **Phaser:** High depth (0.7–1.0), high feedback (0.7–0.9), full mix (100%)
-- **LFO:** Different rates per band — try ascending rates from Root (0.3 Hz) to Transcendence (8 Hz)
+- **LFO:** Different rates per band — try ascending rates from Band 1 (0.3 Hz) to Band 8 (8 Hz)
 - **Spatial:** Narrow pan depth (0.0–0.1)
 - **Compression:** Gentle threshold (−12 dB), low ratio (2:1) to tame resonant peaks
 
 Each band phases at its own rate, creating a dense, evolving texture. The ascending rate pattern produces a barber-pole effect where higher frequencies shimmer faster than lower ones.
 
-### Parallel Compression Mastering
+### 8-Band Parallel Compressor
 - **Phaser:** Off (depth 0, mix 0%)
-- **LFO:** Any (ignored when phaser is off)
 - **Spatial:** Leave at center (pan 0.0, pan depth 0.0)
 - **Compression:** Gentle thresholds (−18 to −12 dB), moderate ratios (3:1–4:1), 50% comp mix across all bands
 - **Utility:** Fine-tune per-band gain to shape the tonal balance
 
-Uses CHAKRABOOST purely as an 8-band parallel compressor. The 50% comp mix blends compressed and dry signals per band, adding density and glue without destroying transients. Adjust per-band thresholds to compress only bands that need control.
+Uses CHAKRABOOST purely as an 8-band parallel compressor — no phasing, no spatial movement. The 50% comp mix blends compressed and dry signals per band, adding density without destroying transients. This is actually mono-safe since nothing is moving in the spatial field.
 
 ### Surround Spatial Orbits
 - **Speaker Layout:** 5.1 or 7.1
-- **Spatial:** Set pan depth (0.5–1.0) and pan depth Y (0.5–1.0) for circular orbits in the surround field
-- **Orbit Angle:** Vary per band — try spacing bands evenly (0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°)
-- **LFO:** Moderate rates (0.5–2.0 Hz) — different rates per band for complex spatial patterns
-- **Phaser:** Optional — low depth for subtle movement, or off for pure spatial processing
+- **Spatial:** Set pan depth (0.5–1.0) and pan depth Y (0.5–1.0) for circular orbits
+- **Orbit Angle:** Vary per band — try spacing evenly (0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°)
+- **LFO:** Moderate rates (0.5–2.0 Hz), different rates per band
+- **Phaser:** Optional — low depth for subtle timbral movement, or off for pure spatial processing
 
-Each band traces its own orbit through the surround field. Staggering orbit angles ensures bands arrive at different speaker positions at any given moment, creating immersive frequency-dependent spatial motion.
+Each band traces its own orbit through the surround field. Staggering orbit angles ensures bands arrive at different speaker positions at any given moment. Works exceptionally well on pads, drones, and atmospheric material in film/game audio.
 
 ### Neural Modulation Texture
 - **LFO Mode:** Neural (on all bands or selected bands)
-- **Neural Rhythm:** Start at 0.5, explore extremes for different rhythmic characters
-- **Neural Articulation:** Varies the shape of the modulation curve — low values are smooth, high values are more angular
-- **Neural Temperature:** Controls variation — low temperature produces predictable patterns, high temperature introduces organic unpredictability
+- **Neural Rhythm:** Start at 0.5, explore extremes
+- **Neural Articulation:** Low values are smooth, high values are angular
+- **Neural Temperature:** Low = predictable, high = organic unpredictability
 - **Phaser:** Moderate depth (0.4–0.6), moderate feedback (0.3–0.5)
 
-The proprietary modulation system produces evolving, non-repeating modulation curves that escape the mechanical feel of standard LFO waveforms. Try setting different rhythm and articulation values per band for maximum textural complexity.
+The proprietary modulation system produces evolving, non-repeating curves that escape the mechanical feel of standard LFO waveforms. Try setting different rhythm and articulation values per band for maximum textural complexity.
+
+### Sound Design: Total Destruction
+- **Phaser:** Full depth (1.0), high feedback (0.85–0.95), full mix (100%)
+- **LFO:** Fast rates (5–10 Hz), different waveforms per band
+- **Spatial:** Maximum pan depth, wide orbits, different orbit angles per band
+- **Compression:** Aggressive threshold (−40 dB), high ratio (15:1–20:1), full comp mix
+- **Dry/Wet:** 100%
+
+Turn any source into something unrecognizable. Field recordings, vocals, drums — everything becomes swirling, pulsing, spatially disorienting texture. This is where all the per-band control earns its keep.
 
 ## Workflow Tips
 
+### Start with Dry/Wet low
+Begin at 15–30% wet to hear how the effect interacts with your source, then push higher once you like the character. At 100% wet, CHAKRABOOST produces a completely different sound from the input — which may be exactly what you want, but it helps to hear the transition.
+
 ### Use Solo to tune individual bands
-Solo each band while adjusting its phaser, compression, and spatial settings. This lets you hear exactly what each chakra range is contributing before hearing the full mix.
+Solo each band while adjusting its phaser, compression, and spatial settings. This lets you hear exactly what each frequency range is contributing before hearing the full mix.
 
 ### Automate Dry/Wet for effect sends
 Instead of using CHAKRABOOST at 100% wet on an insert, try automating the Dry/Wet parameter. Sweep from 0% to 100% during a build-up for a gradual introduction of the effect.
 
 ### Match compression to band content
-Lower bands (Root, Sacral) often benefit from slower attack and release times to preserve bass punch. Higher bands (Crown, Transcendence) can use faster settings to control sibilance and transients without audible pumping.
+Lower bands (1–2) often benefit from slower attack and release to preserve bass punch. Higher bands (7–8) can use faster settings to control sibilance and transients without audible pumping.
 
 ### Bypass as A/B reference
-Use the global Bypass parameter to quickly compare processed and unprocessed signal. The linear-phase crossover ensures no coloration when bypassed — what you hear is purely the effect of the phasing, compression, and spatial processing.
+Use the global Bypass to quickly compare processed and unprocessed signal. The linear-phase crossover ensures no coloration when bypassed — what you hear is purely the effect of the phasing, compression, and spatial processing.
 
 ## Gotchas
 
+### Mono compatibility
+This is a creative stereo/surround effect. Per-band spatial panning means phase cancellation in mono is inherent. If your output needs to translate to mono, use CHAKRABOOST on a send or commit the result and check in mono before printing. Or use it as a pure multiband compressor with all spatial controls at center — that's mono-safe.
+
 ### Latency
 The 255-tap FIR crossover introduces approximately **127 samples of latency** (~2.9ms at 44.1kHz). This is reported to the host DAW for automatic delay compensation. If you experience timing issues, verify your DAW's plugin delay compensation is enabled.
-
-### Mono summing behavior
-The crossover filter bank operates in **mono per channel** — left and right channels are split independently, then processed through per-band effects, then recombined to stereo (or surround). This means the stereo image is preserved through the crossover but each band's phaser operates on the summed mono signal of that band before stereo recovery via spatial panning.
 
 ### Feedback limit
 Phaser feedback is capped at **0.95** to prevent runaway self-oscillation. Even at 0.95, resonant peaks can be aggressive — use per-band compression (or reduce feedback) if you hear excessive ringing.

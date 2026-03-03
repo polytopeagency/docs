@@ -15,7 +15,7 @@ CHAKRABOOST's interface is organized around a central rosette visualizer flanked
 │  IN    │                                │  OUT   │   BAND CONTROL   │
 │  L/R   │     CENTRAL VISUALIZER         │  L/R   │   PANEL          │
 │  METER │                                │  METER │                  │
-│        │     (Leadbeater Rosette)       │        │  ┌────────────┐  │
+│        │     (Rosette Display)          │        │  ┌────────────┐  │
 │        │                                │        │  │  Phaser    │  │
 │        │                                │        │  │  Compress  │  │
 │        │                                │        │  │  Spatial   │  │
@@ -27,22 +27,22 @@ CHAKRABOOST's interface is organized around a central rosette visualizer flanked
 
 ## Band Selector Strip
 
-Eight color-coded buttons across the top of the window, one per chakra band. Click a band to select it and load its parameters into the band control panel. The active band is highlighted; inactive bands dim but still show activity indicators when processing audio.
+Eight color-coded buttons across the top of the window, one per frequency band. Click a band to select it and load its parameters into the band control panel. The active band is highlighted; inactive bands dim but still show activity indicators when processing audio.
 
 | Band | Color | Frequency Region |
 |------|-------|-----------------|
-| 1 | Red | Sub / Low bass |
-| 2 | Orange | Bass |
-| 3 | Yellow | Low mid |
-| 4 | Green | Mid |
-| 5 | Blue | Upper mid |
-| 6 | Indigo | Presence |
-| 7 | Violet | Brilliance |
-| 8 | White | Air |
+| 1 | Red | Sub / Low bass (20–63 Hz) |
+| 2 | Orange | Bass (63–125 Hz) |
+| 3 | Yellow | Low mid (125–250 Hz) |
+| 4 | Green | Mid (250–500 Hz) |
+| 5 | Blue | Upper mid (500–1000 Hz) |
+| 6 | Indigo | Presence (1–2 kHz) |
+| 7 | Violet | Brilliance (2–8 kHz) |
+| 8 | White | Air (8–20 kHz) |
 
 ## Central Visualizer
 
-The Leadbeater rosette stack displays real-time activity across all eight bands as layered, concentric rosette patterns. Each band's rosette ring pulses and rotates in response to its phaser LFO, compression gain reduction, and spatial position. The composite view gives an immediate read on the spectral and spatial state of the entire signal.
+The rosette display shows real-time activity across all eight bands as layered, concentric patterns. Each band's rosette ring pulses and rotates in response to its phaser LFO, compression gain reduction, and spatial position. The composite view gives an immediate read on the spectral and spatial state of the entire signal.
 
 ## Band Control Panel
 

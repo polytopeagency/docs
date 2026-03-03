@@ -9,22 +9,22 @@ CHAKRABOOST splits incoming audio into 8 frequency bands using a **linear-phase 
 
 The crossover operates as **true stereo** — independent left and right filter banks process each channel separately, preserving the stereo image within every band. When bands are recombined after processing, the linear-phase design guarantees **phase-coherent reconstruction** with no comb filtering or phase smearing between adjacent bands.
 
-## The 8 Chakra Bands
+Note: "phase-coherent" describes the crossover itself. The phasers downstream deliberately introduce phase shifts per band — that's the point of the effect.
 
-Each band is aligned to a traditional chakra frequency range:
+## The 8 Bands
 
-| Band | Chakra | Sanskrit | Frequency Range |
-|------|--------|----------|-----------------|
-| 0 | Root | Muladhara | 20–63 Hz |
-| 1 | Sacral | Svadhisthana | 63–125 Hz |
-| 2 | Solar Plexus | Manipura | 125–250 Hz |
-| 3 | Heart | Anahata | 250–500 Hz |
-| 4 | Throat | Vishuddha | 500–1000 Hz |
-| 5 | Third Eye | Ajna | 1000–2000 Hz |
-| 6 | Crown | Sahasrara | 2000–8000 Hz |
-| 7 | Transcendence | — | 8000–20000 Hz |
+| Band | Frequency Range | Region |
+|------|----------------|--------|
+| 1 | 20–63 Hz | Sub / Low bass |
+| 2 | 63–125 Hz | Bass |
+| 3 | 125–250 Hz | Low mid |
+| 4 | 250–500 Hz | Mid |
+| 5 | 500–1000 Hz | Upper mid |
+| 6 | 1000–2000 Hz | Presence |
+| 7 | 2000–8000 Hz | Brilliance |
+| 8 | 8000–20000 Hz | Air |
 
-Bands 0 and 7 are the lowest and highest shelves respectively. Bands 1–6 are bandpass filters defined by adjacent crossover frequencies.
+Bands 1 and 8 are the lowest and highest shelves respectively. Bands 2–7 are bandpass filters defined by adjacent crossover frequencies.
 
 ## Per-Band Controls
 

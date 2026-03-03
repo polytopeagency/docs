@@ -5,47 +5,57 @@ description: An 8-band spatial multipanner with vactrol phaser and adaptive comp
 
 # CHAKRABOOST: Spatial Multipanner Phase Modulator
 
-CHAKRABOOST is an 8-band spatial multipanner that combines three distinct DSP domains per band: phase modulation, dynamics processing, and spatial positioning. Each frequency band is aligned to a traditional chakra frequency range, from Root (20-63 Hz) through Transcendence (8000-20000 Hz).
+CHAKRABOOST is a creative multiband spatial effect that combines three processing domains per band: phase modulation, dynamics processing, and spatial positioning. It splits audio into 8 frequency bands spanning 20 Hz to 20 kHz and applies a full signal chain to each one independently.
 
-Where most multiband processors treat bands as isolated gain stages, CHAKRABOOST operates as a **per-band spatial effects engine** — applying a vactrol-modeled phaser, adaptive parallel compression, and LFO-driven surround panning independently to each of the 8 chakra bands.
+This is not a mixing utility. It's a sound design and creative processing tool for producing spatial movement, frequency-dependent phasing, and evolving textures that would be impossible with a conventional phaser or panner.
+
+## What It Does
+
+Your low end can sit still while your upper mids sweep left, your air frequencies orbit in a wide circle, and the whole thing pulses with a single unified rhythm. Or each band can do its own thing entirely. At low dry/wet settings (15–30%) it adds subtle spatial movement. At high settings it's a full reimagining of the source material.
 
 ## The Processing Pipeline
 
-Every audio band in CHAKRABOOST passes through three stages:
+Every frequency band passes through three stages:
 
-1. **Phase Modulation** — A 4-stage vactrol-modeled phaser per band, faithfully modeling the LED/LDR optocoupler behavior of the Ibanez FP-777 Flying Pan. Six standard LFO waveforms (sine, triangle, saw, reverse saw, square, random) plus a Neural LFO mode that uses a proprietary modulation system to produce organic, evolving modulation curves that escape the mechanical repetition of standard waveforms.
+1. **Phase Modulation** — A 4-stage vactrol-modeled phaser per band, faithfully modeling the LED/LDR optocoupler behavior of the Ibanez FP-777 Flying Pan. Six standard LFO waveforms (sine, triangle, saw, reverse saw, square, random) plus a Neural LFO mode that uses a proprietary modulation system to produce organic, evolving modulation curves.
 
-2. **Adaptive Compression** — Parallel compression per band with real-time crest-factor analysis. The compressor continuously adapts its behavior based on the dynamic profile of each band, blending compressed and dry signals for transparent density control without destroying transients.
+2. **Adaptive Compression** — Parallel compression per band with real-time crest-factor analysis. The compressor continuously adapts its behavior based on the dynamic profile of each band, keeping levels stable as the phaser reshapes them — without the compression fighting the modulation.
 
-3. **Spatial Panning** — Per-band stereo or surround positioning with LFO-driven orbital motion. Four speaker layouts are supported: Stereo, Quad, 5.1, and 7.1. Each band can follow its own spatial trajectory, creating immersive frequency-dependent movement across the soundfield.
+3. **Spatial Panning** — Per-band stereo or surround positioning with LFO-driven orbital motion. Stereo, Quad, 5.1, and 7.1 speaker layouts are supported. Each band can follow its own spatial trajectory, creating frequency-dependent movement across the soundfield.
 
-## The 8 Chakra Bands
+## The 8 Bands
 
-| Band | Chakra | Frequency Range | Rosette Petals |
-|------|--------|----------------|----------------|
-| 1 | Root | 20–63 Hz | 4 |
-| 2 | Sacral | 63–125 Hz | 6 |
-| 3 | Solar Plexus | 125–250 Hz | 10 |
-| 4 | Heart | 250–500 Hz | 12 |
-| 5 | Throat | 500–1000 Hz | 16 |
-| 6 | Third Eye | 1000–2000 Hz | 96 |
-| 7 | Crown | 2000–8000 Hz | 192 |
-| 8 | Transcendence | 8000–20000 Hz | 1 |
+| Band | Frequency Range | Region |
+|------|----------------|--------|
+| 1 | 20–63 Hz | Sub / Low bass |
+| 2 | 63–125 Hz | Bass |
+| 3 | 125–250 Hz | Low mid |
+| 4 | 250–500 Hz | Mid |
+| 5 | 500–1000 Hz | Upper mid |
+| 6 | 1000–2000 Hz | Presence |
+| 7 | 2000–8000 Hz | Brilliance |
+| 8 | 8000–20000 Hz | Air |
 
-The crossover network splitting audio into these 8 bands uses a **true stereo FIR filter bank** with linear-phase response and 255 taps, ensuring phase-coherent reconstruction when bands are summed back together.
+The crossover splitting audio into these bands uses a **true stereo FIR filter bank** with linear-phase response and 255 taps, ensuring phase-coherent reconstruction when bands are summed back together.
 
-## Visualization
+## When To Reach For It
 
-CHAKRABOOST renders each band as a **Leadbeater-inspired chakra rosette** with the traditional petal counts from C. W. Leadbeater's descriptions of the energy centers. The rosettes are GPU-accelerated and respond in real-time to the audio level, phase modulation depth, and spatial position of each band.
+- **Pads and drones** — slow LFO, moderate depth, wide spatial orbits. The pad develops internal motion without being obviously effected.
+- **Drums and percussion** — faster LFO, low feedback, subtle spatial depth. Adds a rotating, breathing quality to the tail while the adaptive compressor preserves the attack.
+- **Vocals (committed, not live)** — gentle phaser on the mid and upper bands only, with spatial movement. Diffuse, spatialized quality without the obvious swoosh.
+- **Sound design** — crank everything. Turn a field recording into something unrecognizable.
+
+## Mono Compatibility
+
+Worth knowing upfront: splitting frequencies across the stereo field means phase cancellation in mono is part of the deal. If your output needs to survive a mono fold, use CHAKRABOOST on sends or committed prints, not across a master bus.
 
 ## Key Capabilities
 
-- **8 chakra-aligned frequency bands** from Root (20 Hz) through Transcendence (20 kHz)
-- **4-stage vactrol-modeled phaser** per band with 6 LFO waveforms + Neural LFO mode (proprietary modulation)
+- **8 frequency bands** from 20 Hz through 20 kHz
+- **4-stage vactrol-modeled phaser** per band with 6 LFO waveforms + Neural LFO mode
 - **Adaptive parallel compression** per band with crest-factor analysis
 - **Spatial panning per band** across stereo, quad, 5.1, and 7.1 speaker layouts with LFO-driven orbits
 - **True stereo FIR crossover** with linear-phase, 255-tap filter bank
-- **GPU-accelerated Leadbeater rosette visualization** with real-time audio reactivity
 - **Per-band solo/mute** and modulation lock for focused editing
 - **~127 samples latency** (~2.9ms at 44.1kHz)
-- **VST3, Audio Unit, and Standalone** formats on macOS
+- **VST3, Audio Unit, and Standalone** on macOS

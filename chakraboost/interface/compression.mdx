@@ -5,7 +5,9 @@ description: Per-band program-dependent parallel compression with crest-factor a
 
 # Adaptive Compression
 
-Each band has an independent adaptive parallel compressor. The compressor uses crest-factor analysis to continuously evaluate the dynamic character of the incoming signal and adjusts its timing behavior accordingly -- no static attack/release values applied blindly to all material.
+Each band has an independent adaptive parallel compressor. The compressor is paired with the phaser for a specific reason: as the phaser sweeps, it reshapes the spectral balance of each band, causing level fluctuations. The adaptive compressor keeps each band's level stable through these sweeps — without fighting the modulation.
+
+The compressor uses crest-factor analysis to continuously evaluate the dynamic character of the incoming signal and adjusts its timing behavior accordingly — no static attack/release values applied blindly to all material.
 
 ## Program-Dependent Timing
 

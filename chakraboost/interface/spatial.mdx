@@ -7,6 +7,10 @@ description: Per-band spatial positioning with LFO-driven modulation orbits and 
 
 Each band has independent spatial positioning with LFO-driven modulation orbits. The same LFO that drives the band's phaser also drives its spatial movement, creating a unified relationship between timbral modulation and spatial motion.
 
+## Mono Compatibility
+
+Splitting frequencies across the stereo field means phase cancellation in mono is inherent to this effect. If your output needs to survive a mono fold, use CHAKRABOOST on a send or bounce the result, rather than applying it to a master bus. The spatial processing is the most mono-unfriendly part of the plugin — locking all bands to center (Pan 0.0, Pan Depth 0.0) eliminates this issue but also removes the spatial dimension.
+
 ## LFO-Driven Orbits
 
 The phaser LFO simultaneously modulates spatial position:
@@ -18,7 +22,7 @@ When both depths are active, the combination of the original LFO on X and its qu
 
 | Configuration | Pan Depth | Pan Depth Y | Result |
 |--------------|-----------|-------------|--------|
-| Static position | 0.0 | 0.0 | No movement -- band stays at its Pan/Pan Y coordinates |
+| Static position | 0.0 | 0.0 | No movement — band stays at its Pan/Pan Y coordinates |
 | Horizontal sweep | > 0 | 0.0 | Left-right oscillation only |
 | Vertical sweep | 0.0 | > 0 | Front-back oscillation only |
 | Circular orbit | Equal | Equal | Circular path around the center point |
@@ -32,7 +36,7 @@ Parameter IDs use the `bandN_` prefix (e.g., `band1_pan`, `band4_panDepth`).
 
 | Parameter | ID Suffix | Range | Default | Description |
 |-----------|-----------|-------|---------|-------------|
-| Pan | `pan` | -1.0--1.0 | 0.0 (center) | Static left-right position -- the center point of any LFO modulation |
+| Pan | `pan` | -1.0--1.0 | 0.0 (center) | Static left-right position — the center point of any LFO modulation |
 | Pan Depth | `panDepth` | 0.0--1.0 | 0.5 | LFO modulation amount on the X (left-right) axis |
 | Pan Y | `panY` | -1.0--1.0 | 1.0 (front) | Static front-back position (surround layouts only) |
 | Pan Depth Y | `panDepthY` | 0.0--1.0 | 0.0 | LFO modulation amount on the Y (front-back) axis |
@@ -56,7 +60,7 @@ Four pan law options determine how level is distributed as a source moves betwee
 |---------|----------|
 | **Constant Power (-3 dB)** | Default. Maintains consistent perceived loudness across the stereo field. Center position is -3 dB per channel. |
 | **Linear** | Simple linear crossfade between channels. Can produce a slight level dip at center. |
-| **-6 dB** | Center position is -6 dB per channel. More aggressive than constant power -- useful for hard-panned sources. |
+| **-6 dB** | Center position is -6 dB per channel. More aggressive than constant power — useful for hard-panned sources. |
 | **Hybrid** | Blends constant power and linear curves. Tighter center image than pure constant power with smoother transitions than linear. |
 
 ## Stereo Width
@@ -71,9 +75,9 @@ An object panner mode provides binaural rendering with ITD (interaural time diff
 
 ## Modulation Lock
 
-Right-click any pan knob to lock that band's spatial position. When locked, the LFO modulation is suppressed for that band -- the pan position remains static at its current coordinates regardless of Pan Depth or Pan Depth Y settings. The phaser LFO continues to operate normally on the phaser sweep; only the spatial modulation is bypassed.
+Right-click any pan knob to lock that band's spatial position. When locked, the LFO modulation is suppressed for that band — the pan position remains static at its current coordinates regardless of Pan Depth or Pan Depth Y settings. The phaser LFO continues to operate normally on the phaser sweep; only the spatial modulation is bypassed.
 
-This is useful for anchoring specific bands (e.g., keeping the sub-bass band locked to center while higher bands orbit freely).
+This is useful for anchoring specific bands (e.g., keeping Band 1 locked to center while higher bands orbit freely).
 
 <Note>
 Pan Depth Y has no audible effect in Stereo layout, since stereo has no front-back dimension. Set the speaker layout to Quad, 5.1, or 7.1 to use Y-axis movement and full orbital paths.
