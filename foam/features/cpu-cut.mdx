@@ -1,22 +1,30 @@
 ---
-title: "CPU Cut"
-description: "Reduce CPU usage on low-power machines"
+title: "CPU Performance"
+description: "Manage threading and density caps to fit your machine"
 ---
 
-The **CPU Cut** button in the header bar reduces FOAM's processing load by scaling density and bubble size by 0.75x, resulting in fewer simultaneous bubbles.
+The **CPU** pill button in the header opens a popup menu for managing FOAM's CPU usage. It controls two things at once: a **bubbles-per-second governor** (a hard ceiling on density) and a **worker thread count** (how many CPU cores FOAM uses for voice rendering).
 
-## When to Use
+## Performance Modes
 
-- Running on a laptop or low-spec machine
-- Using multiple instances of FOAM in a session
-- Experiencing audio dropouts or glitches
+| Mode | Threads | When to use |
+|------|---------|-------------|
+| **Battery** | 1 | Laptop on battery, light sessions |
+| **Balanced** | 2 | Default for most situations |
+| **Performance** | 4 | Heavy sessions, multiple instances |
+| **Maximum** | All available cores | Standalone or solo plugin work, full machine |
 
-## How It Works
+The thread count for each mode is detected from your CPU and shown in the menu.
 
-CPU Cut reduces the bubble count without changing the fundamental character of your sound. The tonal quality and spatial properties remain the same — you just get fewer simultaneous bubbles.
+## Bubbles-per-Second Governor
+
+In addition to the threading mode, the menu shows the current bubbles-per-second cap. FOAM will smoothly throttle density above this threshold to prevent runaway CPU spikes — the cap protects you from setting Rate too high in combination with high Cascade values.
+
+You can also set a custom value from the menu.
 
 ## Other CPU Tips
 
 - Reduce **Rate** — fewer bubbles per second means less CPU
-- Reduce **Topology** — foam physics simulation is CPU-intensive
+- Reduce **Topology** — foam physics simulation is CPU-intensive  
 - Lower **Cascade** — chain reactions multiply bubble count exponentially
+- Choose a less complex **Resonator** preset, or set Resonance amount to 0% if you don't need it
