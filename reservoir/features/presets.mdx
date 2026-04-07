@@ -1,0 +1,33 @@
+---
+title: Presets
+description: Preset system, morphing, and program change
+---
+
+# Presets
+
+RESERVOIR includes a full preset system with save/recall, morphing between presets, and MIDI program change support.
+
+## Saving and Loading
+
+Presets store all parameter values — rhythm type, perforation method, pitch pattern, scale, density ranges, expression settings, ESN seed, and state machine configuration. Presets are stored in `~/Library/Application Support/RESERVOIR/Presets/`.
+
+## Preset Morphing
+
+RESERVOIR can crossfade between any two presets in real-time:
+
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Preset | 0–127 | 0 | Current preset selection |
+| Preset Morph | 0.0–1.0 | 0.0 | Crossfade position (0 = Preset A, 1 = Preset B) |
+| Preset A | 0–127 | 0 | First morph endpoint |
+| Preset B | 0–127 | 0 | Second morph endpoint |
+
+All three parameters are automatable. Draw a Preset Morph automation curve from 0 to 1 over several bars to smoothly transition between two entirely different algorithmic configurations.
+
+## MIDI Program Change
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| MIDI Program Change | On | Respond to incoming MIDI program change messages |
+
+When enabled, incoming MIDI program change messages switch the active preset. This allows external controllers, hardware sequencers, or other plugins to select RESERVOIR presets via standard MIDI.

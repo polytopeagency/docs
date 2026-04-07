@@ -1,0 +1,43 @@
+---
+title: Layers
+description: 12 layers with per-layer MIDI channels and 4 interaction modes
+---
+
+# Layer System
+
+RESERVOIR generates up to **12 simultaneous layers** of MIDI. Each layer runs its own instance of the rhythm engine, perforation engine, and pitch pattern, but shares global parameter settings (density, scale, articulation, etc.).
+
+Layers can be routed to independent MIDI channels and coordinated through layer interaction modes.
+
+## Layer Count
+
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Active Layers | 1–12 | 8 | Number of active generating layers |
+
+Each layer receives a unique phase offset, seeded deterministically from its position. This means Layer 1 and Layer 7 will always produce different rhythmic patterns from the same algorithm settings — the variation is structural, not random.
+
+## Per-Layer MIDI Channels
+
+Each layer can be assigned to its own MIDI channel (1–16), allowing you to route different layers to different instruments in your DAW. By default, layer 10 is routed to the GM drum channel.
+
+In **MPE Mode**, channel allocation is handled automatically following the MPE specification.
+
+## Layer Interaction Modes
+
+The Layer Interaction parameter controls how layers coordinate with each other:
+
+| Mode | What It Does |
+|------|-------------|
+| **Independent** | Each layer generates with no coordination. Maximum textural complexity and density — every layer follows its own logic without regard to others. |
+| **Inverse** | Layers become more active when other layers are quiet, and quieter when others are busy. Creates natural breathing between voices. |
+| **Complementary** | Layers actively fill each other's gaps, producing interlocking patterns where silence in one voice is filled by another. The hocketing effect. |
+| **Synchronized** | Perforation holes appear at similar times across all layers. Creates collective silence — the entire texture breathes together. |
+
+| Parameter | Default |
+|-----------|---------|
+| Layer Interaction | Independent |
+
+<Tip>
+**Complementary** is the most immediately musical default for many situations — 8 layers in Complementary mode create a dense but clear texture where no two layers compete for the same rhythmic space. Try **Synchronized** when you want the whole ensemble to breathe as one.
+</Tip>

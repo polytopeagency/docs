@@ -1,0 +1,67 @@
+---
+title: Installation
+description: Download and install RESERVOIR as VST3, Audio Unit, or Standalone
+---
+
+# Installation
+
+## System Requirements
+
+- **OS:** macOS (Apple Silicon + Intel)
+- **Formats:** VST3, Audio Unit (AU), Standalone
+- **DAW:** Any VST3 or AU-compatible host (Ableton Live, Logic Pro, Reaper, Bitwig, etc.)
+
+## Download
+
+Download the latest RESERVOIR installer from [nomn.jp](https://nomn.jp).
+
+## Install
+
+Open the DMG and drag the plugin and/or app to the included shortcuts:
+
+| Format | Location |
+|--------|----------|
+| **VST3** | `/Library/Audio/Plug-Ins/VST3/RESERVOIR.vst3` |
+| **AU** | `/Library/Audio/Plug-Ins/Components/RESERVOIR.component` |
+| **Standalone** | `/Applications/RESERVOIR.app` |
+
+## DAW Setup
+
+### Ableton Live
+1. Open **Preferences → Plug-Ins**
+2. Enable **VST3** and set the custom folder if needed
+3. Rescan plugins
+4. Find RESERVOIR under **Plug-Ins → NOMN**
+
+### Logic Pro
+1. Open **Logic Pro → Settings → Plug-In Manager**
+2. Logic scans AU plugins automatically on launch
+3. Find RESERVOIR under **MIDI FX → NOMN → RESERVOIR**
+
+### Reaper
+1. Open **Preferences → Plug-Ins → VST**
+2. Add VST3 path if not already listed
+3. Rescan
+4. Insert RESERVOIR on any track via **FX → VST3**
+
+### Bitwig
+1. Open **Settings → Locations → Plug-ins**
+2. Confirm `/Library/Audio/Plug-Ins/VST3` is listed
+3. Click **Rescan**
+4. Find RESERVOIR in the device browser under **NOMN**
+
+## MIDI Routing
+
+RESERVOIR generates MIDI output. To hear sound:
+
+1. Load RESERVOIR on a **MIDI track** or **instrument track**
+2. Route RESERVOIR's MIDI output to a virtual instrument (synth, sampler, etc.)
+3. Press play — RESERVOIR generates MIDI in sync with your DAW transport
+
+<Tip>
+In **Standalone** mode, RESERVOIR uses its built-in General MIDI synth — you don't need a DAW. Pick an instrument from the dropdown, hit Generation On, and you'll hear sound immediately. You can still route output to a virtual MIDI bus to drive external software if you prefer.
+</Tip>
+
+## Uninstall
+
+Delete the plugin files from the locations listed above. User presets are stored in `~/Library/Application Support/RESERVOIR/` — remove this folder to clear all saved data.

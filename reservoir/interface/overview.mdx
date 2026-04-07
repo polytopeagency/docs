@@ -1,0 +1,56 @@
+---
+title: Interface Overview
+description: Layout and navigation of the RESERVOIR plugin window
+---
+
+# Interface Overview
+
+RESERVOIR's interface is organized around four parameter cards surrounding a central isometric pillar visualizer, with a status bar along the bottom.
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  [MIDI Activity]                  RESERVOIR                         │
+├──────────────┬──────────────────────────────┬───────────────────────┤
+│              │                              │                       │
+│   RHYTHM     │                              │   EXPRESSION          │
+│   ENGINE     │                              │                       │
+│              │     ISOMETRIC PILLAR VIZ     │                       │
+│──────────────│       + ESN DRIFT CHART      │───────────────────────│
+│              │                              │                       │
+│ PERFORATION  │                              │  PITCH LOGIC          │
+│              │                              │                       │
+│              │                              │                       │
+├──────────────┴──────────────────────────────┴───────────────────────┤
+│  Layers: 8/12  |  Events: 234  |  Section: 1/4  |  [Generation On] │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+## The Four Cards
+
+### Left Column
+- **Rhythm Engine** (top left) — Controls *when* notes occur. Select from 17 rhythm techniques and adjust density, note length, and engine-specific parameters.
+- **Perforation Engine** (bottom left) — Controls which notes are *removed*. Select from 7 filtering strategies and adjust perforation amount and layer interaction.
+
+### Right Column
+- **Expression** (top right) — Controls *how* notes are articulated. Velocity range, velocity curve shape, articulation style, CC controllers, and micro-timing.
+- **Pitch Logic** (bottom right) — Controls *what* notes play. Scale selection from 150+ scales, root note, octave span, and 11 pitch selection algorithms.
+
+## Central Visualization
+
+The central area shows the **isometric pillar visualizer** — each active layer is a pillar in a 3D landscape, with height and density mapped to the layer's current activity. Above it sits the **ESN drift chart**: a 16-bar deviation plot of the Echo State Network's internal state.
+
+The visualizer is GPU-accelerated and maintains a smooth frame rate even with hundreds of simultaneous events. See [Visualization](/reservoir/features/visualization) for details.
+
+## Bottom Bar
+
+- **Layer count** — Active layers out of 12
+- **Event count** — Total MIDI events generated
+- **Section indicator** — Current section in the state sequence (when Auto-Evolve is on)
+- **Generation toggle** — Master on/off for MIDI generation
+- **Export MIDI** — Write generated MIDI to file
+
+## Per-Layer MIDI Channels
+
+Each of the 12 layers can be routed to its own MIDI channel (1–16), or all to a single channel. This lets you split layers across multiple instruments in your DAW with channel-based routing.
+
+In **MPE Mode**, layers automatically allocate channels for per-note pitch bend and expression, following the MPE specification.

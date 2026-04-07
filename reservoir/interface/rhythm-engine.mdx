@@ -1,0 +1,64 @@
+---
+title: Rhythm Engine
+description: 17 rhythm generation techniques
+---
+
+# Rhythm Engine
+
+The Rhythm Engine determines *when* notes occur. It generates a stream of attack times and durations in real-time, synchronized to DAW transport via PPQ (pulses per quarter note) timing.
+
+All 17 techniques are **streaming** — they maintain internal state and produce the next event on demand, enabling sub-10ms latency.
+
+## Rhythm Techniques
+
+| Technique | What It Does |
+|-----------|-------------|
+| **Random** | Stochastic inter-onset intervals within the density range. No periodicity, no pattern — pure scattered time points. |
+| **Polyrhythm** | Superimposes two periodic cycles at ratio A:B, producing composite resultants from their interference. Multiple modes including Major, Minor, Fractioned, and paired balance/expansion/contraction. Optional Phasing and Sync Detect toggles. |
+| **Grouping** | Notes cluster into groups of varying sizes (e.g., 5-3-2), then disperse. Creates rhythmic cells with internal acceleration and deceleration. Multiple grouping modes including by-product, by-generator, and custom. |
+| **Cloud** | Stochastic density field modulated by overlapping sine waves at incommensurate frequencies. Creates regions of rhythmic concentration and rarefaction — dense clusters dissolving into sparse scatter. |
+| **Euclidean** | Distributes N pulses as evenly as possible across M steps. Produces maximally-even rhythmic patterns found across world music traditions. |
+| **Harmonic** | Maintains multiple pulse streams at overtone-series ratios (1:2:3:...N). Events fire when any harmonic pulses, creating rhythms derived from the physics of vibrating bodies. |
+| **Multi-Generator** | Combines three or more periodic generators. Modes include 3-Generator interference, Fibonacci series, and additional growth series. |
+| **Instrumental** | Models classical and dance rhythmic templates — Polka, Fox-trot, Waltz, Rhumba, plus a fully editable Custom mode. Adjustable attack and rest place counts. |
+| **Coordination** | Coordinates two generators across the time domain — PL distribution, attack synchronization, or full coordination. Configurable time and attack generators. |
+| **Permutation** | Systematic reordering of rhythmic elements through duration, rest, accent, or circular permutation. Variation control adjusts how far the permutation strays from the source order. |
+| **Continuity** | Recursive rhythmic subdivision — splits durations by divisor, by bar, or by attack to a configurable depth. |
+| **Power Series** | Group sizes follow mathematical progressions — squares, powers of 2, triangular numbers, binomial expansions. Creates accelerating or decelerating rhythmic arcs. |
+| **Growth Series** | Each duration is built from previous ones following a growth rule — Fibonacci, Series II, Series III, interference groups, or swing hybrid. |
+| **Acceleration** | Tempo-curve generation with configurable rate, cycle length, and direction. Modes include harmonic, arithmetic, geometric, power, summation, primes, and rubato. |
+| **L-System** | String rewriting generates fractal rhythmic sequences. Adjustable iteration depth and ratio. |
+| **Beat Grid** | A 16-step binary seed pattern (drum machine style) is expanded by a probabilistic process each bar. Low density stays close to the seed; high density produces wilder variations. |
+| **Style Grid** | A 4-axis pad (X / Y / Z / W) navigating thousands of percussion pattern clusters. Move the sliders to morph between feels. The Wander control adds slow autonomous drift. |
+
+## Global Parameters
+
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Density Min | 0.01–60 | 2.0 | Minimum attacks per beat across all layers |
+| Density Max | 0.01–60 | 8.0 | Maximum attacks per beat across all layers |
+| Note Len Min | 0.01–32 | 0.4 | Minimum note length (beats) |
+| Note Len Max | 0.01–32 | 0.9 | Maximum note length (beats) |
+| Rhythm Pattern | — | Random | Algorithm selection |
+
+## Engine-Specific Parameters
+
+Each engine exposes its own dedicated controls when selected. A few of the most-used:
+
+| Parameter | Applies To | Description |
+|-----------|------------|-------------|
+| Polyrhythm Type | Polyrhythm | Major, Minor, Fractioned, paired modes |
+| Ratio A / Ratio B | Polyrhythm | Generator periods (1–16 each) |
+| Pulses / Steps | Euclidean | Number of pulses distributed across M steps |
+| Group Pattern | Grouping | 5-3-2, 3-3-3, 4-3, 7-5-3, 2-3-5-8 |
+| Multi-Gen Mode | Multi-Generator | 3-Generator, Fibonacci, Series II, Series III |
+| Instrumental Mode | Instrumental | Polka, Fox-trot, Waltz, Rhumba, Custom |
+| Iterations / L/S Ratio | L-System | Recursion depth and long/short ratio |
+| Beat Grid Pattern | Beat Grid | 16-bit seed pattern (drum-machine grid) |
+| Style X / Y / Z / W | Style Grid | 4D position in the percussion-pattern space |
+| Style Wander | Style Grid | Autonomous drift speed |
+| Accel Rate / Cycle | Acceleration | Speed-up/slow-down rate and cycle length |
+
+<Note>
+Density values are attacks per beat — they scale with tempo automatically, so a setting of 4 attacks/beat stays at 4 attacks/beat whether the DAW is at 60 or 180 BPM.
+</Note>

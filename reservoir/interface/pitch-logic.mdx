@@ -1,0 +1,71 @@
+---
+title: Pitch Logic
+description: 11 pitch selection algorithms and 150+ scale library
+---
+
+# Pitch Logic
+
+The Pitch Logic card determines *what* notes play. It combines a **scale selection** system (150+ scales) with a **pitch pattern algorithm** (11 methods) that decides how pitches are chosen from the scale.
+
+All pitch patterns are streaming — they maintain internal state and produce the next pitch on demand.
+
+## Pitch Pattern Algorithms
+
+| Algorithm | What It Does |
+|-----------|-------------|
+| **Sequential** | All pitches in the set must sound before any can repeat (with octave displacement allowed). Ensures complete coverage of the pitch space within each cycle. |
+| **Spiral** | Spirals outward from a center pitch, alternating above and below in expanding intervals. Creates a widening melodic cone. |
+| **Fibonacci** | Next pitch determined by a growth-series interval sequence. Direction reverses when pitch boundaries are reached. |
+| **Register** | Systematic traversal through octave registers — plays through one octave before moving to the next. The Order parameter shifts from sequential to shuffled traversal. |
+| **Probabilistic** | Weighted probability transitions where closer intervals have higher probability. The Leap parameter shifts the bias from stepwise motion toward larger leaps. |
+| **Golden Ratio** | Divides the pitch set at the golden ratio point, creating two subsets, and alternates between them. |
+| **Beating** | Constructs a pitch set from the interference of two interval generators. Produces combination-tone-derived collections. |
+| **Mirror** | Alternates between original pitches and their inversion around a configurable axis. Creates palindromic pitch contours. |
+| **Permutation** | Systematic reordering of the pitch set through circular rotations, retrograde, and other transformations. |
+| **Corpus** | Pitch transitions shaped by a learned transition model. The Context parameter biases toward ascending motion, stepwise motion, or large leaps. |
+| **Arpeggiator** | Polyphonic arpeggiator across all active layers, locked to the current scale and root. The pattern parameter controls speed and direction. |
+
+## Parameters
+
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Pitch Selection | — | Sequential | Algorithm selection |
+| Pitch Pattern Shape | 0.0–1.0 | 0.5 | Algorithm-specific control (see below) |
+| Scale | 0–150 | C Major | Scale selection from library |
+| Root Pitch Class | C–B | C | Root note |
+| Starting Octave | −1 to 9 | 3 | Base octave for pitch set |
+| Octave Span | 1–10 | 4 | Number of octaves to span |
+| Custom Pitch Classes | bitmask | all on | Custom scale via 12-bit pitch-class mask |
+
+### Pattern Parameter Meanings
+
+The Pitch Pattern Shape slider controls different aspects depending on the active algorithm:
+
+| Algorithm | What it controls |
+|-----------|------------------|
+| Sequential | Octave displacement spread |
+| Spiral | Center pitch position |
+| Fibonacci | Interval magnitude scaling |
+| Register | Sequential ↔ shuffled traversal order |
+| Probabilistic | Stepwise ↔ leaping bias |
+| Golden Ratio | Split point adjustment |
+| Beating | Generating interval adjustment |
+| Mirror | Inversion axis position |
+| Permutation | Transformation type |
+| Corpus | Motion bias (ascending / stepwise / leaping) |
+| Arpeggiator | Speed and direction |
+
+## Scale Library
+
+RESERVOIR includes 150+ scales spanning:
+
+- **Western modes** — Major, Minor, Dorian, Phrygian, Lydian, Mixolydian, Locrian, Harmonic Minor, Melodic Minor
+- **Pentatonic and blues** — Major Pentatonic, Minor Pentatonic, Blues
+- **Symmetric** — Whole Tone, Chromatic, Diminished, Double Diminished
+- **Japanese** — Kumoi, Iwato, Hon-Kumoi-Joshi, Banshiki-Cho, Naka Zora, Noh, Kokin-Choshi, Shimo-Chidori, and more
+- **Indian ragas** — Yaman, Bhairavi, Todi, Marwa, Lalit, Hindole, Kafi, and more
+- **Synthetic and microtonal** — quartal formations, mutated hexadic scales, intervallic mutations
+- **Ancient** — Archaic Greek, Chinese Reform, Mongolian
+- **Custom** — User-defined pitch class set via bitmask
+
+See [Scale Reference](/reservoir/reference/scales) for the complete list with descriptions.

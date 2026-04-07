@@ -1,0 +1,106 @@
+---
+title: Expression
+description: Velocity, articulation, CC controllers, micro-timing, and phrase structure
+---
+
+# Expression
+
+The Expression card shapes *how* notes are played — their velocity, duration character, continuous controller data, micro-timing feel, and phrase-level breathing.
+
+## Velocity
+
+| Parameter | Range | Default |
+|-----------|-------|---------|
+| Velocity Min | 1–127 | 60 |
+| Velocity Max | 1–127 | 100 |
+| Velocity Curve | shape selector | Off |
+| Curve Amount | 0.0–1.0 | 0.0 |
+
+### Velocity Curve Shapes
+
+| Shape | Character |
+|-------|-----------|
+| **Off** | Random within the velocity range |
+| **Natural Phrase** | Breath-like swell — quiet at the edges of a phrase, louder in the middle |
+| **Ramp** | Linear ramp through the phrase |
+| **Drive** | Pushes hard, peaks at the climax of the phrase |
+| **Fade** | Long decay across the phrase |
+| **Captured** | Holds and replays a manually captured velocity contour |
+
+The **Curve Amount** parameter blends from pure random (0) to full curve (1), so you can mix the shape with stochastic variation.
+
+## Articulation Styles
+
+| Style | What It Does |
+|-------|-------------|
+| **Full Length** | Notes play at their full generated duration. Suitable for drones and sustained textures. |
+| **Legato** | Sustained, connected notes with slight duration reduction. Smooth, singing quality. |
+| **Staccato** | Short, detached notes. Punchy, rhythmic character with clear separation. |
+| **Accent** | Notes with emphasis on selected positions — the rhythmic equivalent of an accent mark. |
+| **Varying** | Progressive shortening through each phrase — begins near legato and shortens toward staccato by phrase end. Creates a natural "running out of breath" contour. |
+
+## CC Controllers
+
+RESERVOIR streams continuous controller data organized into five groups, each with its own update rate and envelope shape. All CC streams use breakpoint envelope shapes modulated by phrase position. The envelopes incorporate organic variation for musically natural CC curves rather than mechanical automation.
+
+### Dynamics
+| CC | Controller |
+|----|-----------|
+| CC11 | Expression |
+| CC2 | Breath |
+
+Plus **Channel Aftertouch**, which follows the Dynamics envelope.
+
+### Timbre
+| CC | Controller |
+|----|-----------|
+| CC74 | Brightness |
+| CC71 | Resonance |
+
+### Vibrato
+| CC | Controller |
+|----|-----------|
+| Pitch Bend | Vibrato oscillation (centered at 8192) |
+| CC76 | Vibrato Rate |
+| CC77 | Vibrato Depth |
+
+### Articulation (note-on only)
+| CC | Controller |
+|----|-----------|
+| CC73 | Attack Time |
+| CC72 | Release Time |
+
+### Effects
+| CC | Controller |
+|----|-----------|
+| CC1 | Modulation |
+| CC21 | Flutter |
+
+## Micro-Timing (Groove Feel)
+
+| Style | What It Does |
+|-------|-------------|
+| **Strict** | Events fire exactly at their computed PPQ positions. Metronomic precision. |
+| **NOMN** | Subtle micro-timing variation that responds to phrase position and event density. Contextual humanization. |
+| **User Groove** | Loads and applies a user-supplied groove template. |
+| **Genre Groove** | Selects from 30 genre-derived microtiming feels — swing, samba, dembow, hip-hop pocket, drum & bass, and more. |
+
+When **Genre Groove** is active, the **Genre Groove** index parameter (0–30) selects which feel to apply.
+
+## Phrase Structure
+
+Articulation and expression operate within a phrase structure system. Phrases cycle through varying lengths. At each phrase boundary:
+
+- A breath is optionally inserted (brief silence)
+- Articulation resets (for Varying mode)
+- CC envelopes reset their phrase position modulation
+
+This creates natural phrasing with periodic breathing points, even in continuously generated texture.
+
+## MPE Mode
+
+| Parameter | Default |
+|-----------|---------|
+| MPE Mode | Off |
+
+When MPE Mode is enabled, layers automatically allocate channels for per-note pitch bend and expression following the MPE specification, allowing connected MPE-aware instruments to receive RESERVOIR's per-note timbral variation.

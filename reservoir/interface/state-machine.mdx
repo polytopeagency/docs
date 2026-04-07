@@ -1,0 +1,62 @@
+---
+title: State Machine
+description: Sections, crossfade, arc forms, and macro compositional shapes
+---
+
+# State Machine
+
+The State Machine provides **macro-level compositional form**. It divides a performance into sections (states), each with its own parameter settings, and crossfades between them to create evolving compositional arcs.
+
+When **Auto-Evolve** is enabled, RESERVOIR automatically progresses through the state sequence based on elapsed time, smoothly interpolating all parameters between adjacent states.
+
+## How It Works
+
+1. RESERVOIR generates a sequence of 2–8 **sections**, each with a randomized but musically coherent set of parameters (density, perforation, velocity, pitch range, etc.)
+2. The state sequencer progresses through these sections over time
+3. A configurable **crossfade** ratio determines how gradually parameters transition between sections
+4. The result is a composition that evolves — building, releasing, shifting character — without manual automation
+
+## Parameters
+
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Auto-Evolve | On/Off | Off | Enable automatic state progression |
+| Sections | 2–8 | 4 | Number of sections in the sequence |
+| Section Length | 15–180 sec | 60 sec | Average duration per section |
+| Section Crossfade | 0–100% | 50% | How much of each section is spent transitioning |
+| Arc Form | choice | Random | Overall shape of parameter evolution |
+| Arc Position | 0.0–1.0 | 0.0 | Manual override for position in the arc |
+| Auto Arc Progress | On/Off | On | Use time-based progression vs. manual position |
+
+## Arc Forms
+
+| Form | Description |
+|------|-------------|
+| **Random** | Each section's parameters are independently randomized. Creates unpredictable, exploratory form. |
+| **Golden Section** | Climax point placed near the golden ratio through the sequence. Parameters build toward this point, then recede. |
+| **Arch** | Symmetric arch — parameters build to a midpoint climax, then mirror the descent. Classical ABA proportions. |
+| **Wedge** | Continuous build from sparse to dense (or vice versa). One-directional parameter evolution. |
+| **Corpus** | Section transitions shaped by a learned formal-proportions model. |
+
+## Manual Control
+
+When **Auto Arc Progress** is off, the **Arc Position** parameter directly controls position in the state sequence. This is automatable from your DAW — draw automation curves to manually shape the macro form, or use MIDI CC to control it in real-time.
+
+## Echo State Network
+
+Independent of the section-based state machine, RESERVOIR runs an **Echo State Network** — a recurrent layer that listens to the generator's own output and feeds back time-decaying influence over density, pitch drift, and timbral shift.
+
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Meta-Gen On | On/Off | Off | Enable the ESN feedback layer |
+| Evolution Rate | 0.0–1.0 | 0.5 | How fast the network responds |
+| Pitch Depth | 0.0–1.0 | 0.5 | How much the network influences pitch drift |
+| Rhythm Depth | 0.0–1.0 | 0.5 | How much the network influences density |
+| Texture Depth | 0.0–1.0 | 0.5 | How much the network influences timbral shift |
+| Variation | 0–9999 | random | Seeds the network — different seeds produce different evolution paths |
+
+The ESN drift chart in the central visualizer shows the network's internal state as a 16-bar deviation plot, so you can see when it's wandering vs. settled.
+
+<Tip>
+The State Machine and the ESN are complementary. The State Machine handles **planned form** — sections with deliberate character. The ESN handles **organic drift** within those sections. Use both together for compositions that have macro shape *and* moment-to-moment life.
+</Tip>

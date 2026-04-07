@@ -52,44 +52,44 @@
         ]
       },
       {
-        "tab": "PERF",
+        "tab": "RESERVOIR",
         "groups": [
           {
             "group": "Getting Started",
             "pages": [
-              "perf/introduction",
-              "perf/installation",
-              "perf/quick-start"
+              "reservoir/introduction",
+              "reservoir/installation",
+              "reservoir/quick-start"
             ]
           },
           {
             "group": "Interface Guide",
             "pages": [
-              "perf/interface/overview",
-              "perf/interface/rhythm-engine",
-              "perf/interface/perforation",
-              "perf/interface/pitch-logic",
-              "perf/interface/expression",
-              "perf/interface/state-machine"
+              "reservoir/interface/overview",
+              "reservoir/interface/rhythm-engine",
+              "reservoir/interface/perforation",
+              "reservoir/interface/pitch-logic",
+              "reservoir/interface/expression",
+              "reservoir/interface/state-machine"
             ]
           },
           {
             "group": "Features",
             "pages": [
-              "perf/features/presets",
-              "perf/features/midi",
-              "perf/features/layers",
-              "perf/features/audio-gating",
-              "perf/features/visualization"
+              "reservoir/features/presets",
+              "reservoir/features/midi",
+              "reservoir/features/layers",
+              "reservoir/features/audio-gating",
+              "reservoir/features/visualization"
             ]
           },
           {
             "group": "Reference",
             "pages": [
-              "perf/reference/algorithms",
-              "perf/reference/scales",
-              "perf/reference/tips",
-              "perf/reference/licensing"
+              "reservoir/reference/algorithms",
+              "reservoir/reference/scales",
+              "reservoir/reference/tips",
+              "reservoir/reference/licensing"
             ]
           }
         ]

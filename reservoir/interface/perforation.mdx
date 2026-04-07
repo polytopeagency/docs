@@ -1,0 +1,48 @@
+---
+title: Perforation Engine
+description: 7 perforation methods that create gaps in the musical texture
+---
+
+# Perforation Engine
+
+The Perforation Engine is RESERVOIR's defining feature. After the Rhythm Engine generates a stream of events, the Perforation Engine decides which events are **kept** and which are **removed** — creating holes, gaps, and silence within the texture.
+
+This is not random muting. Each perforation method uses a distinct mathematical structure to determine its pattern of presence and absence, producing characteristic textural signatures.
+
+## Perforation Methods
+
+| Method | Character |
+|--------|-----------|
+| **Euclidean** | Distributes gaps as evenly as possible across the event stream. Produces the most uniform distribution of silence achievable for a given density. |
+| **Prime Sieve** | Removes events at positions divisible by primes. Creates quasi-periodic patterns with long-range structure. |
+| **Fibonacci** | Filters events based on a Fibonacci index decomposition. Events with simpler representations are more protected from removal, creating self-similar filtering at all scales. |
+| **Modular** | Keeps events whose index satisfies a modular congruence. Creates perfectly periodic patterns with configurable modulus and phase offset. |
+| **Golden Ratio** | Quasiperiodic lattice based on phi. Two modes: Phi creates beating between irrational and integer ratios; Spiral Holes uses the golden angle for maximally uniform distribution. |
+| **Cellular** | A 1D cellular automaton evolves each cycle, producing complex emergent perforation structures from simple local rules. Creates chaotic non-repeating patterns. |
+| **Corpus Density** | Rest patterns shaped by a learned phrase-density model. Context-aware — considers note length, pitch direction, and repetition. Produces musically natural rest placement. |
+
+## Parameters
+
+| Parameter | Range | Default | Description |
+|-----------|-------|---------|-------------|
+| Perforation | 0.0–1.0 | 0.3 | Gap density — 0 = no gaps, 1 = maximum removal |
+| Perforation Method | — | Euclidean | Algorithm selection |
+| Spiral Holes | On/Off | Off | Golden Ratio mode toggle |
+| Corpus Bias | 0.0–1.0 | 0.7 | How strongly the corpus model influences decisions (Corpus Density only) |
+
+## Layer Interaction Modes
+
+Perforation can operate independently per layer or coordinate across layers:
+
+| Mode | What It Does |
+|------|-------------|
+| **Independent** | Each layer's perforation pattern is unrelated to other layers. Maximum textural complexity. |
+| **Inverse** | Layers become more active when other layers are quiet, and quieter when others are busy. Creates natural breathing between voices. |
+| **Complementary** | Layers actively fill each other's gaps, producing interlocking patterns where silence in one voice is filled by another. |
+| **Synchronized** | Perforation holes appear at similar times across all layers. Creates collective silence — the entire texture breathes together. |
+
+The layer interaction mode is set globally via the **Layer Interaction** parameter.
+
+<Note>
+A Perforation amount of 0.3 means roughly 30% of generated events are removed. At 0.0, every event plays; at 1.0, maximum removal is applied. The exact density depends on the method — some methods are inherently denser than others at the same setting.
+</Note>

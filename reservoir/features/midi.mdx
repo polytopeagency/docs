@@ -1,0 +1,72 @@
+---
+title: MIDI Output
+description: MIDI output, export, per-layer channel routing, and DAW transport sync
+---
+
+# MIDI Output
+
+RESERVOIR is a MIDI generator — it produces MIDI note and CC data that you route to instruments in your DAW.
+
+## Real-Time Output
+
+RESERVOIR outputs MIDI in real-time, synchronized to your DAW's transport:
+
+- **Note On/Off** messages for each generated event across all active layers
+- **Continuous Controller** data from the Expression system (CC1, CC2, CC11, CC21, CC71, CC72, CC73, CC74, CC76, CC77)
+- **Pitch Bend** for vibrato (or per-note in MPE mode)
+- **Channel Aftertouch** following the Dynamics envelope
+
+All timing is PPQ-based (pulses per quarter note), ensuring perfect sync with DAW tempo changes, time signature changes, and transport jumps.
+
+## Per-Layer Channel Routing
+
+Each of the 12 layers can be routed to its own MIDI channel (1–16). This lets you split layers across multiple instruments in your DAW using channel-based routing — for example, layers 1–4 to a drum instrument on channel 10, layers 5–8 to a pad on channel 1, layers 9–12 to a bass on channel 2.
+
+In **MPE Mode**, layers automatically allocate channels for per-note expression following the MPE specification.
+
+## Standalone GM Synth
+
+In **Standalone** mode, RESERVOIR includes a built-in General MIDI synthesizer. You can:
+
+- Pick from 128 GM instruments via the **Instrument** parameter
+- Hear sound immediately without any external software
+- Layer 10 is automatically routed to GM drums
+
+## Transport Sync
+
+| Feature | Behavior |
+|---------|----------|
+| **Play** | RESERVOIR starts generating at the current transport position |
+| **Stop** | All pending note-offs are sent immediately — no stuck notes |
+| **Seek/Jump** | Engines reset and seek to the new position |
+| **Tempo change** | Density (attacks per beat) remains constant; absolute timing adjusts |
+| **Loop** | Engines reset at loop boundaries |
+
+In **Standalone** mode, RESERVOIR uses an internal clock at a configurable BPM. Toggle **Generation On** to start/stop.
+
+## MIDI Export
+
+The Export button writes the current or most recent generation to a standard MIDI file. The export produces one track per active layer, preserving the polyphonic structure for editing in your DAW.
+
+## Duration Modes
+
+| Mode | Description |
+|------|-------------|
+| **Beats** | Generate for a fixed number of beats |
+| **Bars** | Generate for a fixed number of bars |
+| **Seconds** | Generate for a fixed duration in seconds |
+| **Infinite** | Generate continuously until stopped (default) |
+
+| Parameter | Range | Default |
+|-----------|-------|---------|
+| Composition Duration | 4–256 | 32 |
+| Duration Mode | Beats / Bars / Seconds / Infinite | Infinite |
+| Generation On | On/Off | On |
+
+## MIDI Program Change
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| MIDI Program Change | On | Respond to incoming MIDI program change messages |
+
+When enabled, incoming MIDI program change messages switch the active preset. This allows external controllers, hardware sequencers, or other plugins to select RESERVOIR presets via standard MIDI.

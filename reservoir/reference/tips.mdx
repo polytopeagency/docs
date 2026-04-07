@@ -1,0 +1,107 @@
+---
+title: Tips & Recipes
+description: Composition recipes, workflow suggestions, and gotchas
+---
+
+# Tips & Recipes
+
+## Composition Recipes
+
+### Minimal Texture
+- **Rhythm:** Euclidean, density 0.5–1.5
+- **Perforation:** Golden Ratio at 50–60%, Spiral Holes on
+- **Pitch:** Kumoi or Iwato scale, Sequential pattern
+- **Layers:** 3–4 in Complementary mode
+- **Expression:** Legato articulation, narrow velocity range (40–70)
+
+Sparse, interlocking patterns over a Japanese pentatonic. Route each layer to a different instrument for a chamber-like texture.
+
+### Dense Stochastic Cloud
+- **Rhythm:** Random or Cloud, density 4–10
+- **Perforation:** Cellular at 30–40%
+- **Pitch:** Chromatic or Whole Tone, Probabilistic pattern with high Leap
+- **Layers:** 8–12 in Independent mode
+- **Expression:** Staccato, wide velocity range (20–127)
+
+Maximum density and independence. Works as a textural wash — route to a reverberant pad or granular synth.
+
+### Polyrhythmic Hocket
+- **Rhythm:** Polyrhythm (ratio 3:5) or Euclidean
+- **Perforation:** Euclidean at 40%
+- **Pitch:** Major Pentatonic, Golden Ratio pattern
+- **Layers:** 6–8 in Complementary mode
+- **Expression:** Legato, narrow velocity range (70–100)
+
+Interlocking rhythmic cells passed between layers. The hocket behavior creates a single continuous line from multiple voices.
+
+### Polyphonic Arpeggiator
+- **Rhythm:** Beat Grid or Euclidean, density 2–4
+- **Perforation:** Modular at 20%
+- **Pitch:** Arpeggiator pattern, Harmonic Minor scale
+- **Layers:** 4–6 in Independent mode
+- **Expression:** Staccato, Natural Phrase velocity curve
+
+Multi-layer polyphonic arp lines locked to the scale. Tweak the Pitch Pattern Shape to vary speed and direction.
+
+### Style Grid Drift
+- **Rhythm:** Style Grid, Style Wander 0.5–0.8
+- **Perforation:** Euclidean at 25%
+- **Pitch:** Major or Minor Pentatonic, Probabilistic
+- **Layers:** 4–8 in Synchronized mode
+- **Expression:** Genre Groove micro-timing, varied genres
+
+Let the Style Grid wander on its own through percussion-pattern space while you control the harmonic side. Great for live improvisation.
+
+### Evolving Long-Form
+- **State Machine:** Auto-Evolve on, 6 sections, 90-second section length, 60% crossfade, Arch form
+- **ESN:** Meta-Gen on, Evolution Rate 0.4, all depths 0.5
+- **Rhythm:** Start with any technique — the state machine and ESN will vary parameters together
+- **Pitch:** Yaman or Melodic Minor for rich harmonic material
+- **Layers:** 8 in Independent mode
+
+Let RESERVOIR run for 8–10 minutes. Record the MIDI output and edit the result into a finished composition.
+
+### Self-Similar Cycle
+- **Rhythm:** Growth Series (Fibonacci variant)
+- **Perforation:** Fibonacci at 25%
+- **Pitch:** Fibonacci pattern, Harmonic Minor scale
+- **Layers:** 4–6 in Independent mode
+
+Self-similar at every level — growth-series durations, Fibonacci perforation, Fibonacci intervals.
+
+## Workflow Tips
+
+### Layering with DAW instruments
+Route different RESERVOIR layers to different MIDI channels, then to different instruments. Layer 1→piano, Layer 2→strings, Layer 10→drums. Layer interaction mode determines how these parts interrelate.
+
+### Using preset morphing for transitions
+Set Preset A to a sparse, quiet configuration and Preset B to a dense, active one. Automate Preset Morph from 0→1 over 16 bars for a smooth build.
+
+### Capturing variations
+Run RESERVOIR multiple times with the same settings — the stochastic elements (and the ESN's seed) ensure each generation is different while maintaining the same structural character. Record multiple takes and comp the best moments.
+
+### Scale as compositional tool
+Changing the scale mid-composition (via automation) creates harmonic shifts while maintaining rhythmic continuity. Try automating from Major to Phrygian for a sudden darkening.
+
+### Use the standalone GM synth for sketching
+You don't need a DAW to sketch ideas. Open the standalone, pick a GM instrument, hit Generation On, and prototype patches. When you find something you like, export the MIDI and bring it into your DAW.
+
+## Gotchas
+
+### No sound in the DAW?
+RESERVOIR generates MIDI, not audio. You need a virtual instrument downstream to produce sound. Check your DAW's MIDI routing. (In Standalone mode, the built-in GM synth handles this for you.)
+
+### Stuck notes
+If you hear stuck notes after stopping transport, it's usually a DAW routing issue. RESERVOIR sends all pending note-offs when transport stops. Try toggling Generation off and on.
+
+### Very dense output
+At high density (8–10 attacks/beat) with many layers and low perforation, RESERVOIR can produce extremely dense MIDI. If your instrument struggles, reduce active layers or increase perforation amount.
+
+### State machine not working
+Auto-Evolve must be turned **on** for the state machine to control parameters. When off, the UI sliders control everything directly.
+
+### ESN doing nothing
+The ESN is off by default. Turn on **Meta-Gen On** in the State Machine card to enable it, then increase Evolution Rate and the depth sliders. Watch the drift chart to confirm it's active.
+
+### Per-layer channels not routing
+Some DAWs default plugin tracks to "All channels" or strip channel info. Make sure your DAW track is set to receive multi-channel MIDI from the plugin.

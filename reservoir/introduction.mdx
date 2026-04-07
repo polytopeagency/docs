@@ -1,0 +1,43 @@
+---
+title: What is RESERVOIR?
+description: A real-time polyphonic MIDI composition engine
+---
+
+# RESERVOIR: Echo State Composer
+
+RESERVOIR is a real-time polyphonic MIDI composition engine that generates, perforates, and shapes musical texture through a pipeline of generative algorithms — and feeds its own output back through a recurrent network that holds decaying memories of what's already played.
+
+Where most generative tools produce monophonic sequences or rely on randomness alone, RESERVOIR operates as a **12-layer polyphonic orchestrator** with per-layer MIDI channel routing. Each layer generates independent rhythm and pitch material while sharing the global compositional state.
+
+## The Compositional Pipeline
+
+Every note RESERVOIR produces passes through five stages:
+
+1. **Rhythm Engine** — Determines *when* notes occur, with 17 rhythm techniques ranging from stochastic clouds to grid-based pattern morphing.
+
+2. **Perforation Engine** — Determines which notes are *removed*, creating gaps and texture through 7 different filtering approaches.
+
+3. **Pitch Logic** — Determines *what* notes play, selecting from 150+ scales using 11 pitch selection algorithms including a polyphonic arpeggiator.
+
+4. **Expression Control** — Determines *how* notes are articulated: velocity curve shaping, articulation styles, continuous CC controllers, and four micro-timing styles including 30 genre-derived grooves.
+
+5. **Echo State Network** — A recurrent layer that listens to RESERVOIR's own output and feeds back time-decaying influence over density, pitch drift, and timbral shift, visualized in real time.
+
+## Why RESERVOIR Exists
+
+Algorithmic composition has a long lineage — but those ideas have largely stayed confined to academic software and offline rendering. RESERVOIR brings them into a real-time DAW-integrated plugin. Every algorithm runs in streaming mode with sub-10ms latency, synchronized to DAW transport via PPQ-based timing. The output is standard MIDI on user-assignable channels — route it to any instrument.
+
+## Key Capabilities
+
+- **12 independent layers** with per-layer MIDI channel routing and 4 layer-interaction modes
+- **17 rhythm techniques**, **7 perforation methods**, **11 pitch patterns**
+- **150+ scales** spanning Western, Japanese, Indian, microtonal, and synthetic systems
+- **Echo State Network** for self-listening evolution
+- **State sequencer** for macro-level compositional arc with crossfading sections
+- **Style Grid** — a 4-axis pad navigating thousands of percussion pattern clusters
+- **Genre Groove** micro-timing with 30 distinct feels
+- **Topographic mesh visualization** with isometric pillar UI
+- **Preset morphing** with automatable crossfade between any two presets
+- **MPE mode** for per-note pitch bend
+- **Standalone GM synth** with 128 instruments (no DAW required)
+- **VST3, Audio Unit, and Standalone** formats

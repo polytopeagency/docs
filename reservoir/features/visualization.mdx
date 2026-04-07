@@ -1,0 +1,35 @@
+---
+title: Visualization
+description: Isometric pillar visualizer, ESN drift chart, and color modes
+---
+
+# Visualization
+
+RESERVOIR's central visualizer is an **isometric pillar landscape**: each active layer appears as a 3D pillar whose height and density reflect that layer's current activity. Above the pillars sits a **topographic mesh** that responds to the overall texture's evolution, plus the **ESN drift chart** showing the Echo State Network's internal state over the last 16 bars as a Tufte-style deviation plot.
+
+The visualizer is GPU-accelerated and maintains a smooth frame rate even with hundreds of simultaneous events.
+
+## Color Modes
+
+A color mode selector controls how pitch, register, interval, and harmonic relationships are mapped to color across the pillars. Each mode draws from a different tradition of sound-color association.
+
+| Mode | What It Does |
+|------|-------------|
+| **Greyscale** | Brightness maps to velocity/dynamics only. No pitch-color mapping. |
+| **Chromatic** | Each pitch class (C through B) receives a distinct color from a perceptually uniform palette. |
+| **Register** | Color maps to octave register — low pitches are dark, high pitches are bright. |
+| **Interval** | Color maps to the interval between each note and the lowest currently active pitch. |
+| **Tension** | Color maps to a consonance-dissonance score. Consonant intervals are cool/muted; dissonant intervals are warm/saturated. |
+| **Schillingerian** | 12 fully saturated colors mapped to pitch classes following a classical 12-color theory mapping. |
+| **Scriabin** | Pitch classes mapped to colors following Scriabin's synesthetic associations. |
+| **Rimsky-Korsakov** | Pitch classes mapped to the key-color associations described by Rimsky-Korsakov — keys as landscapes and weather. |
+
+<Note>
+The color mode is a visualization parameter only — it does not affect the generated MIDI output. Switch freely between modes to analyze different aspects of the texture in real-time.
+</Note>
+
+## ESN Drift Chart
+
+The Echo State Network drift chart displays the network's recent internal state as a 16-bar deviation plot. As the network listens to RESERVOIR's output and feeds back into density, pitch drift, and timbral shift, you'll see the curves wander.
+
+A flat chart means the network is in a settled regime. Wavering curves mean the network is actively shaping the generation. Dramatic excursions mean the network is in a highly responsive state — useful for ambient/drift compositions.

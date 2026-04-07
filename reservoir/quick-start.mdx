@@ -1,0 +1,71 @@
+---
+title: Quick Start
+description: Load, generate, shape, and export in five minutes
+---
+
+# Quick Start
+
+## 1. Load RESERVOIR
+
+Insert RESERVOIR on a MIDI or instrument track in your DAW. Route its MIDI output to any virtual instrument.
+
+Or open it in **Standalone** mode — there's a built-in General MIDI synth, so you don't need a DAW or external instrument to hear something immediately.
+
+## 2. Press Play
+
+RESERVOIR syncs to your DAW transport automatically. When the transport is running, RESERVOIR generates MIDI in real-time across its active layers.
+
+In **Standalone** mode, toggle **Generation On** to start the internal clock.
+
+## 3. Explore the Defaults
+
+Out of the box, RESERVOIR generates with:
+- **8 active layers**
+- **Random rhythm** at roughly 2–8 attacks per beat
+- **Euclidean perforation** at 30%
+- **Sequential pitch** pattern over the C Major scale across 4 octaves
+- **Infinite duration** mode — keeps generating until you stop
+
+You should hear a continuously evolving polyphonic texture.
+
+## 4. Shape the Texture
+
+Try these adjustments to hear immediate changes:
+
+| Parameter | Effect |
+|-----------|--------|
+| **Density Min/Max** | More or fewer notes per beat |
+| **Perforation** | Higher = more gaps in the texture |
+| **Rhythm Pattern** | Switch between approaches (Euclidean, Polyrhythm, Cloud, Style Grid, etc.) |
+| **Scale** | Change the harmonic palette — try Iwato, Yaman, or Whole Tone |
+| **Active Layers** | More layers = denser polyphony |
+
+## 5. Try a Different Algorithm Combination
+
+Switch the **Rhythm Pattern** to *Euclidean* and the **Perforation Method** to *Fibonacci*. Change the scale to *Kumoi*. You'll hear a completely different character — evenly-distributed rhythms filtered through self-similar gaps over a Japanese pentatonic.
+
+## 6. Open the Style Grid
+
+Set **Rhythm Pattern** to **Style Grid** and start moving the X/Y/Z/W sliders. You're navigating a multi-dimensional surface of percussion patterns — small movements stay in one zone, larger movements jump between feels. Increase **Style Wander** to let the pattern drift on its own.
+
+## 7. Try the Arpeggiator
+
+Switch **Pitch Selection** to **Arpeggiator** for a polyphonic arpeggiator across all active layers, locked to the current scale and root. Combine with low **Density Min** and **Staccato** articulation for crisp arp lines.
+
+## 8. Enable Auto-Evolve
+
+Turn on **Auto-Evolve** to activate the state sequencer. RESERVOIR will automatically progress through sections, smoothly crossfading parameters to create a macro-level compositional arc. Adjust **Sections** (2–8) and **Section Length** to control the form.
+
+## 9. Watch the Echo State Network
+
+The ESN visualization shows a 16-bar deviation chart of the network's internal state. As RESERVOIR plays, you'll see the curves wander — those are the network's outputs feeding back into density, pitch drift, and timbral shift. Set **Evolution Rate** higher to make the network respond faster.
+
+## 10. Capture the Output
+
+When you have a texture you like:
+- Use your DAW's MIDI capture/recording to grab RESERVOIR's output in real-time
+- Or use the **Export MIDI** button to write the current generation to a MIDI file (one track per layer)
+
+<Tip>
+RESERVOIR produces raw compositional material. The real creative work begins when you route different layers to different instruments, edit the exported MIDI, and build arrangements around it.
+</Tip>
