@@ -140,14 +140,14 @@
   "navbar": {
     "links": [
       {
-        "label": "nomn.ai",
-        "href": "https://nomn.ai"
+        "label": "nomn.jp",
+        "href": "https://nomn.jp"
       }
     ]
   },
   "footer": {
     "socials": {
-      "website": "https://nomn.ai"
+      "website": "https://nomn.jp"
     }
   }
 }

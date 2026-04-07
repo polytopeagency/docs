@@ -10,8 +10,8 @@ This is the heart of FOAM's sound generation. These controls determine the funda
 | Knob | What It Does |
 |------|--------------|
 | **Rate** | How many bubbles are emitted per second. At minimum, you get sparse individual pops. At maximum, a dense foam cascade. Exponentially scaled — small movements at the low end create subtle changes, while the upper range gets dense quickly. |
-| **Size** | The physical size of bubbles, which directly determines pitch. Larger bubbles = lower pitch, smaller bubbles = higher pitch. |
-| **Ring** | How long each bubble resonates after bursting. Short times (20-50ms) give crisp pops; longer times (up to 500ms) create sustained, bell-like tones. Default is 100ms (physically realistic). |
+| **Size** | The physical size of bubbles (0.1-50 mm radius), which directly determines pitch via the Minnaert resonance equation. Larger bubbles = lower pitch, smaller bubbles = higher pitch. |
+| **Ring** | How long each bubble resonates after bursting (5-625 ms). Short times give crisp pops; longer times create sustained, bell-like tones. Default is 125 ms (physically realistic). |
 
 ## Cascade & Movement
 
@@ -25,12 +25,12 @@ This is the heart of FOAM's sound generation. These controls determine the funda
 | Knob | What It Does |
 |------|--------------|
 | **Shimmer** | Real bubbles aren't perfect spheres — they wobble and deform. This adds subtle pitch modulation, creating organic "chorus-like" movement. |
-| **Balance** | Controls the natural amplitude relationship between bubble sizes. At 100% (physics-accurate), large bubbles are louder than small ones. At 0%, all bubbles have equal loudness regardless of size. |
+| **Natural Balance** | Controls the natural amplitude relationship between bubble sizes. At 100% (physics-accurate, the default), large bubbles are louder than small ones. At 0%, all bubbles have equal loudness regardless of size. |
 | **Jets** | When bubbles burst at the surface, they can produce secondary "plink" sounds. Adds the characteristic rain-drop-on-water quality. |
 
 ## Flow Type
 
-Controls the statistical pattern of bubble emission:
+The **Flow Type** dropdown controls the statistical pattern and pitch behavior of bubble emission:
 
 | Mode | Character |
 |------|-----------|
@@ -38,3 +38,9 @@ Controls the statistical pattern of bubble emission:
 | **Nucleation** | Bubbles emerge in clusters from nucleation sites |
 | **Foam Raft** | Dense, raft-like emission patterns |
 | **Turbulent** | Chaotic, swirling emission timing |
+| **Melodic** | Each MIDI note plays one tightly-pitched bubble — turns FOAM into a melodic instrument |
+| **Harmonic** | Bubbles spread across the selected scale around the played note — chordal/harmonic textures |
+
+<Tip>
+**Melodic** and **Harmonic** modes also activate pitch-tracking on the Resonator (in Fluid Dynamics) — the resonant body retunes itself to whichever note you're holding. Combine with the Cave or Cistern preset for tunable cinematic textures.
+</Tip>

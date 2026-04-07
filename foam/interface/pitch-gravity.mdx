@@ -1,9 +1,9 @@
 ---
 title: "Pitch Gravity Logic"
-description: "Scale quantization and pitch behavior"
+description: "Scale quantization and ADP psychoacoustic enhancement"
 ---
 
-Controls how bubble pitches relate to musical scales.
+Controls how bubble pitches relate to musical scales, and adds psychoacoustic processing for melodic clarity.
 
 ## Scale Selection
 
@@ -12,9 +12,22 @@ Controls how bubble pitches relate to musical scales.
 | **Scale** | Choose from 75+ scales including Western modes, world scales, microtonal systems, and experimental tunings. The dropdown shows intervals (e.g., "Major: 2-4-5-7-9-11"). |
 | **Root** | The root note of the selected scale (C through B). |
 
-## Pitch Behavior
+## Quantization
 
 | Knob | What It Does |
 |------|--------------|
-| **Gravity** | How strongly bubble pitches snap to scale notes. At 0%, pitches are free and continuous. At 100%, all pitches quantize to the nearest scale degree. |
-| **Snap** | Blends between pure physics-based pitch ("Scalar") and FOAM's psychoacoustic processing ("MAGIC"). The MAGIC side makes pitched content feel stronger and more musical. |
+| **Quantize** | How strongly bubble pitches snap to scale notes. At 0%, pitches are free and continuous (raw physics). At 100%, all pitches quantize to the nearest scale degree. |
+
+When a scale is selected, **incoming MIDI notes** are also snapped to the scale before being used to compute bubble pitch — so an arpeggiator or sequencer outputting non-scale notes still produces in-key bubbles.
+
+## Snap (Auditory Distortion Products)
+
+| Knob | What It Does |
+|------|--------------|
+| **Snap** | Drives the **ADP engine**, which spawns psychoacoustic distortion-product partners alongside each main bubble. Low values add subtle spectral richness; high values create dense inharmonic clouds. |
+
+The Snap knob is FOAM's most distinctive sound-shaping control after Rate and Size. It synthesizes auditory distortion products — the same combination tones your ear generates when two close frequencies sound together — and emits them as physical bubbles. The result is content the ear hears as "rougher" or "more present" without literally adding harmonics.
+
+<Tip>
+Snap is independent of pitch quantization — you can have free continuous pitches with heavy ADP processing, or perfectly scale-locked melodic mode with no ADP at all.
+</Tip>

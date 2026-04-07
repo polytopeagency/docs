@@ -1,29 +1,64 @@
 ---
-title: "Fluid Dynamics"
-description: "Density, tension, and damping of the medium"
+title: "Fluid Dynamics & Acoustics"
+description: "Liquid medium and physical resonance"
 ---
 
-These controls define the liquid that your bubbles exist within. Different liquids produce dramatically different sounds.
+These controls define the **liquid your bubbles exist within** and the **physical space they resonate inside**. Together they shape the fundamental tonal character of FOAM.
 
 ## Material Presets
 
-The **Material** dropdown provides scientifically-accurate presets:
+The **Material** dropdown provides scientifically-accurate liquid presets. Each one sets density, surface tension, and viscosity to real measured values.
 
 | Material | Character |
 |----------|-----------|
-| **Water** | Bright, crisp pops |
+| **Custom** | Manual control of all three liquid parameters |
+| **Water** | Bright, crisp pops — the reference liquid |
 | **Seawater** | Slightly denser, the default starting point |
-| **Soap Solution** | Longer-lasting bubbles, softer pops |
+| **Soap Solution** | Lower surface tension, longer-lived bubbles |
 | **Glycerol** | Thick, gloopy, slow decay |
 | **Honey** | Very viscous, muted and heavy |
+| **Olive Oil** | Medium viscosity, organic warmth |
 | **Mercury** | Extreme density, unusual resonance |
+| **Ethanol** | Light, low surface tension |
+| **Molasses** | Most viscous, almost percussive thuds |
 
-## Manual Controls
+## Manual Liquid Controls
 
-When Material is set to "Custom," you have direct control:
+When Material is set to "Custom" you have direct control. (These knobs are visible in all modes; selecting a preset overwrites them.)
 
 | Knob | What It Does |
 |------|--------------|
-| **Liquid Mass** | Density of the liquid. Higher density = slightly lower pitch and different damping character. |
-| **Tension** | Surface tension affects how bubbles form and burst. Low tension = fragile, quick pops. High tension = more crystalline ring. |
-| **Viscosity** | How "thick" the liquid is. Low viscosity (like water) gives quick, bright decay. High viscosity (like honey) gives slow, muffled decay. |
+| **Liquid Mass** | Density of the liquid (600-14000 kg/m³). Higher density = slightly lower pitch and different damping character. |
+| **Tension** | Surface tension (0.02-0.5 N/m) affects how bubbles form and burst. Low tension = fragile, quick pops. High tension = more crystalline ring. |
+| **Viscosity** | How "thick" the liquid is (0.0003-12 Pa·s). Low viscosity (water) gives quick, bright decay. High viscosity (honey) gives slow, muffled decay. |
+
+## Resonator
+
+The **Resonator** dropdown applies a physical-space body resonance to all bubbles passing through it — as if the entire foam were happening inside a glass jar, a metal pipe, a cave, or your skull. Each preset is a multi-mode bandpass filter modeled on the real physics of that space.
+
+| Preset | Character |
+|--------|-----------|
+| **None** | Bypass — no resonance applied |
+| **Glass Jar** | Bright, ringing — Helmholtz fundamental + cylindrical cavity modes (~280 Hz) |
+| **Metal Pipe** | Perfectly harmonic, medium decay — open-open tube (~170 Hz) |
+| **Ceramic Bowl** | Inharmonic shell modes, warm and rounded (~520 Hz) |
+| **Bathtub** | Dense, boomy — rectangular room modes (~113 Hz) |
+| **Underwater** | Deep, muffled — water column resonance, heavy damping (~65 Hz) |
+| **Seashell** | Airy, whispery — Helmholtz + spiral cavity (~380 Hz) |
+| **Metal Bucket** | Harsh, clangy — high-Q metal shell (~210 Hz) |
+| **Cave** | Massive, infrasonic — large irregular room with very long decay (~17 Hz) |
+| **Cistern** | Extremely long decay, like Fort Worden — tall stone cylinder (~28 Hz) |
+| **Well** | Quarter-wave tube, odd harmonics dominant (~8.5 Hz) |
+| **Skull** | Formant-like resonances modeled on bone conduction (~200 Hz) |
+
+| Knob | What It Does |
+|------|--------------|
+| **Resonance** | Wet/dry mix amount (0-100%). At 0% the resonator is bypassed even if a preset is selected. |
+
+<Tip>
+In Melodic and Harmonic Flow Types, the resonator's pitch tracks the lowest active MIDI note — turning the body resonance into a tunable instrument rather than a fixed character.
+</Tip>
+
+<Info>
+The Resonance amount knob is included in Chaos modulation, so right-click to lock it if you want a stable resonance while everything else moves.
+</Info>
